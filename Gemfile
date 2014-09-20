@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 
+# Authentication via Google:
 gem "omniauth-google-oauth2"
+#Store environmental variables
+gem 'figaro'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
 #use postgres as database for Active Record
@@ -40,6 +43,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # gem 'debugger', group: [:development, :test]
 group :development do
   gem 'better_errors'
+  gem 'binding_of_caller'
   gem 'hirb'
   gem 'pry-byebug'
 end

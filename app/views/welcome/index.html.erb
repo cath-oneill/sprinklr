@@ -1,2 +1,11 @@
 <h1>Welcome#index</h1>
 <p>Find me in app/views/welcome/index.html.erb</p>
+
+<!-- <div class="home-sign-in">
+  <% if current_user %>
+    <%= link_to "SIGN OUT", "/signout", class: 'button code-font' %>
+  <% else %>
+<%= link_to "GOOGLE SIGN IN", "/auth/google_oauth2", class: 'button code-font no-margin' %>  <% end %>
+</div> -->
+
+<%= link_to "Sign in with Google", "/auth/google_oauth2" %>
