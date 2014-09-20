@@ -11,6 +11,7 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :contact_method
       t.string :email
       t.string :phone
+      t.string :login_email
 
       t.timestamps
     end
