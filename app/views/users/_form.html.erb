@@ -25,7 +25,10 @@
   </div>
   <div class="field">
     <%= f.label :contact_method %><br>
-    <%= f.number_field :contact_method %>
+    <%= f.select :contact_method, options_for_select([
+        ["Weekly Email", 0],
+        ["Weekly Text", 1] ], f.object.contact_method
+      ) %>
   </div>
   <div class="field">
     <%= f.label :email %><br>
