@@ -1,3 +1,26 @@
 // Place all the styles related to the Welcome controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.splash {
+  margin-top: 0;
+  padding-top: 15vh;
+  background-image: url(image-path('Green_grass_by_Gardek.jpg'));
+  background-size: 100%;
+  height: 85vh;
+  h1 {
+    font-size: 7rem;
+    font-family: $header_font;
+  }
+  h1, h3, p {
+    // color: $cloud;
+    margin: 0;
+  }
+}
+
+.caption {
+  float: right;
+  margin-right: 3vw;
+  margin-top: -2em;
+}

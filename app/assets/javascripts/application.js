@@ -15,8 +15,5 @@
 //= require foundation
 //= require_tree .
 
-window.onload = function() {
-        $(document).foundation();
-};
+$(function(){ $(document).foundation(); });
 
-console.log('doc loaded in application js');

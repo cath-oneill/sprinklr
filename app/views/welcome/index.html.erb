@@ -1,9 +1,20 @@
-<h1>SPRINKLR!</h1>
-<p>The key to saving water and keeping your lawn green.  For customers of Austin Water.</p>
+<div class="splash">
+  <div class="row">
+    <div class="columns small-12">
+      <h1>sprinklr!</h1>
+      <h3>the key to saving water and keeping your lawn green</h3>
+      <h3>for customers of Austin Water Utility</h3>      
+    </div>
+  </div>
+</div>
+<p class="caption"><a href="http://gardek.deviantart.com/art/Green-grass-134434959"><em>Green Grass</em> by Gardek</a></p>
 
-<div class="home-sign-in">
+
+<div class="sign-in">
   <% if current_user %>
-    <%= link_to "SIGN OUT", "/signout", class: 'button code-font' %>
+    <h4>Welcome back to Sprinklr, <%= current_user.name %></h4>
+    <%= link_to "Your Profile", "/users/#{current_user.id}", class: 'button code-font' %>
+    <%= link_to "Sign Out", "/signout", class: 'button code-font' %>
   <% else %>
     <%= link_to "GOOGLE SIGN IN", "/auth/google_oauth2", class: 'button code-font no-margin' %> 
   <% end %>

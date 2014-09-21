@@ -5,6 +5,9 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   
   private
+  def disable_nav
+    @disable_nav = true
+  end
   
   def require_login
     unless logged_in?
