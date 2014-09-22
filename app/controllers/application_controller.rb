@@ -6,7 +6,13 @@ class ApplicationController < ActionController::Base
   
   private
   def disable_nav
-    @disable_nav = true
+    if current_user.nil?
+      @disable_nav = true
+    end
+  end
+
+  def disable_warnings
+    @disable_warnings = true
   end
   
   def require_login

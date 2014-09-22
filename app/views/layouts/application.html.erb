@@ -10,9 +10,13 @@
 <body>
   <%   unless @disable_nav %>
   <%= render 'partials/nav'%>
+  <% end %>
+
+  <% unless @disable_warnings %>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p> 
   <% end %>
+  
   <%= yield %>
 
   <%= javascript_include_tag "application" %>
