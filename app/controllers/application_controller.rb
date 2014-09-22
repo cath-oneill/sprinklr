@@ -5,6 +5,15 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   
   private
+  def disable_nav
+    if current_user.nil?
+      @disable_nav = true
+    end
+  end
+
+  def welcome_only
+    @welcome_only = true
+  end
   
   def require_login
     unless logged_in?

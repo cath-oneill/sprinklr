@@ -1,0 +1,14 @@
+@import url(http://fonts.googleapis.com/css?family=Libre+Baskerville:700);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,700italic,400,600,700);
+
+$sprinklr_font: 'Libre Baskerville', serif;
+
+.sprinklr {
+  font-family: $sprinklr_font;
+  font-weight: bold;
+}
+
+//icon sizing
+i.small { font-size: 0.8rem; }
+i.medium { font-size: 1rem; }
+i.large { font-size: 5rem; }

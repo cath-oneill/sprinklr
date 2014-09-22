@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(version: 20140916120137) do
     t.integer  "contact_method"
     t.string   "email"
     t.string   "phone"
+    t.string   "login_email"
+    t.string   "profile_pic"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

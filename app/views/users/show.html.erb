@@ -1,54 +1,37 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @user.name %>
-</p>
+<div class="panel">
 
-<p>
-  <strong>Uid:</strong>
-  <%= @user.uid %>
-</p>
+  <h3><%= @user.name %>'s Profile</h3>
 
-<p>
-  <strong>Provider:</strong>
-  <%= @user.provider %>
-</p>
 
-<p>
-  <strong>Address:</strong>
-  <%= @user.address %>
-</p>
+  <p>
+    <strong>Name:</strong>
+    <%= @user.name %>
+  </p>
 
-<p>
-  <strong>Zip:</strong>
-  <%= @user.zip %>
-</p>
+  <p>
+    <strong>Address:</strong>
+    <%= @user.address %>
+  </p>
 
-<p>
-  <strong>Latitude:</strong>
-  <%= @user.latitude %>
-</p>
+  <p>
+    <strong>Zip:</strong>
+    <%= @user.zip %>
+  </p>
 
-<p>
-  <strong>Longitude:</strong>
-  <%= @user.longitude %>
-</p>
+  <p>
+    <strong>Contact method:</strong>
+    <% if @user.contact_method == 0 or @user.contact_method.nil? %>
+      You have not yet selected a weekly contact method!
+    <% elsif @user.contact_method == 1 %>
+      You have selected to receive a weekly email at <%= @user.email %>.
+    <% elsif @user.contact_method == 2 %>
+      You have selected to receive a weekly text message at <%= @user.phone %>.
+    <% elsif @user.contact_method == 3 %>
+      You have selected to not receive weekly watering updates and can check out your recommendations online.
+    <% end %>
+  </p>
+  <%= link_to 'Update your Profile Information', edit_user_path(@user), :class => "button radius" %> 
 
-<p>
-  <strong>Contact method:</strong>
-  <%= @user.contact_method %>
-</p>
+</div>  
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<p>
-  <strong>Phone:</strong>
-  <%= @user.phone %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>

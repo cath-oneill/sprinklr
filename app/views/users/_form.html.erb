@@ -12,46 +12,35 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <label>Name: 
+    <%= f.text_field :name %></label>
   </div>
   <div class="field">
-    <%= f.label :uid %><br>
-    <%= f.text_field :uid %>
+    <label>Address: 
+    <%= f.text_field :address %></label>
   </div>
   <div class="field">
-    <%= f.label :provider %><br>
-    <%= f.text_field :provider %>
+    <label>Zip: 
+    <%= f.text_field :zip %></label>
   </div>
   <div class="field">
-    <%= f.label :address %><br>
-    <%= f.text_field :address %>
+    <label>Your Preferred Contact Method: 
+    <%= f.select :contact_method, options_for_select([
+        ["Please select:", 0],
+        ["Weekly Email", 1],
+        ["Weekly Text", 2],
+        ["No Weekly Contact -- I'll check my recommendations online.", 3] ], f.object.contact_method
+      ) %></label>
   </div>
   <div class="field">
-    <%= f.label :zip %><br>
-    <%= f.text_field :zip %>
+    <label>Email: 
+    <%= f.text_field :email %></label>
   </div>
   <div class="field">
-    <%= f.label :latitude %><br>
-    <%= f.text_field :latitude %>
-  </div>
-  <div class="field">
-    <%= f.label :longitude %><br>
-    <%= f.text_field :longitude %>
-  </div>
-  <div class="field">
-    <%= f.label :contact_method %><br>
-    <%= f.number_field :contact_method %>
-  </div>
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.text_field :email %>
-  </div>
-  <div class="field">
-    <%= f.label :phone %><br>
-    <%= f.text_field :phone %>
+    <label for="">Phone:
+    <%= f.text_field :phone %></label>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit(:class => "button radius", value: "Save Information") %>
   </div>
 <% end %>
