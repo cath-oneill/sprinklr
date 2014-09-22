@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
     session[:user_id] = user.id
     user.save
     if new_user
-      redirect_to edit_user_path(user)
+      redirect_to edit_user_path(user), alert: "Welcome to sprinklr!"
     else
       redirect_to user_path(user)
     end
@@ -19,6 +19,6 @@ class SessionsController < ApplicationController
  
   def destroy
     session[:user_id] = nil
-    redirect_to root_url, :alert => "Signed out!"
+    redirect_to root_url
   end
 end

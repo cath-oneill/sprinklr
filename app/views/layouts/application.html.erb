@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>SPRINKLR</title>
+  <title>sprinklr!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag "vendor/modernizr" %>
@@ -9,14 +9,24 @@
 </head>
 <body>
 <!-- nav disabled if not signed in  -->
-  <%   unless @disable_nav %>
+  <% unless @disable_nav %>
   <%= render 'partials/nav'%>
   <% end %>
 <!-- for everything but welcome page -->
   <% unless @welcome_only %>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p> 
+  <% if !notice.nil? || !alert.nil? %>
+  <br>
+  <div class="row">
+    <div class="columns small-12 medium-8 large-4 small-centered">
+      <div class="panel callout radius">
+        <p class="notice"><%= notice %> <%= alert %></p>     
+      </div>
+    </div>
+  </div>
+  <% end %>
   
+  <br>
+
   <div class="row">
     <div class="columns small-12 medium-9">
       <%= yield %>  
