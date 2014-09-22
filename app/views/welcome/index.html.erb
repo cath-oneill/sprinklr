@@ -2,8 +2,8 @@
   <div class="row">
     <div class="columns small-12">
       <h1>sprinklr!</h1>
-      <h3>saving water and keeping your lawn green</h3>
-      <h3>for customers of Austin Water Utility</h3>      
+      <h3>saving water and keeping your lawn green even if you don't have a green thumb</h3>
+      <h5>for customers of Austin Water Utility</h5>      
     </div>
   </div>
 </div>
@@ -15,8 +15,8 @@
       What do you get?
     </h2>
   </div>
-  <div class="columns small-8">
-    <ul>
+  <div class="columns small-6">
+    <ul class="square">
       <li>
         <h5>never forget another watering day</h5>
       </li>
@@ -46,18 +46,39 @@
       </li>
     </ul>
   </div>
-<div class="columns small-4">
-  <div class="sign-in">
-    <% if current_user %>
-        <h5>Welcome back to sprinklr!</h5>
-        <%= link_to "Your Profile", "/users/#{current_user.id}", class: 'button' %>
-        <br>
-        <%= link_to "Sign Out", "/signout", class: 'button' %>
-    <% else %>
-      <h5>Sign Up Now!</h5>
-      <p></p>
-      <%= link_to "GOOGLE SIGN IN", "/auth/google_oauth2", class: 'button' %> 
-    <% end %>
+  <div class="columns small-5">
+    <div class="sign-in panel radius">
+      <% if current_user %>
+          <h5>Welcome back to sprinklr!</h5>
+          <%= link_to "Your Profile", "/users/#{current_user.id}", class: 'button' %>
+          <br>
+          <%= link_to "Sign Out", "/signout", class: 'button' %>
+      <% else %>
+        <a href="/auth/google_oauth2">
+          <h3 class="text-center">Sign Up Now with Google!</h3>
+          <div class=" columns medium-4 large-3 medium-centered">
+            <i class="fi-social-google-plus large"></i>
+          </div>
+        </a>
+      <% end %>
+    </div>
   </div>
-</row>
+</div>
+
+<div class="how">
+  <div class="row">
+      <br>
+    <div class="columns small-12 panel">
+      <h2>Everything you need to know about <span class="sprinklr">sprinklr</span>:</h2>
+      <h4>How does it work?</h4>
+      <p><span class="sprinklr">sprinklr</span> uses your address and micro-local weather data to calculate exactly how much water your lawn needs.  For the most accurate calculations, you'll need to let us know some basic information about your landscaping.  But don't worry!  You don't need to be an expert.  We have easy pictures for you to choose from.  There is a lot that goes into figuring out how much water you need: rainfall, sprinkler style, evapotranspiration (the amount of water that evaporates before soaking into the ground), grass type, lawn slope, and more.  But we'll cover all that and send you a text or email before your watering day with simple instructions.</p>
+      <h4>Who can use <span class="sprinklr">sprinklr</span>?</h4>
+      <p>At this point, <span class="sprinklr">sprinklr</span> focuses on City of Austin Water Utility customers.  We will adapt your personalized watering recommendations to the Watering Restrictions enforced by the utility.  Austin has been under Stage 2 Watering Restrictions since 2012 to adapt to the decreasing levels of rainfall in Central Texas.  If the stage changes, we will update your watering recommendations.</p>
+      <h4>How does this save water?</h4>
+      <p>We will tell you how much to water so you don't overwater.  Furthermore, by maintaining a regular watering schedule, you will be keeping your landscaping healthy so it doesn't require excessive watering later.  Also, we will let you know if your grass is a water-hog grass.  If so, you may want to consider a more drought-resistant option.</p>
+    </div>
+  </div>
+</div>
+
+
 
