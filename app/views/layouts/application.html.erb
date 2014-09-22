@@ -8,17 +8,30 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<!-- nav disabled if not signed in  -->
   <%   unless @disable_nav %>
   <%= render 'partials/nav'%>
   <% end %>
-
-  <% unless @disable_warnings %>
+<!-- for everything but welcome page -->
+  <% unless @welcome_only %>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p> 
+  
+  <div class="row">
+    <div class="columns small-12 medium-9">
+      <%= yield %>  
+    </div>
+    <div class="columns medium-3">
+      <%= render 'partials/sidebar'%>    
+    </div>
+  </div>
   <% end %>
   
+<!--   For welcome page only: -->
+  <% if @welcome_only %>
   <%= yield %>
-
+  <% end %>
+  
   <%= javascript_include_tag "application" %>
 </body>
 </html>

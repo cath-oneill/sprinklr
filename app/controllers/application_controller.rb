@@ -11,8 +11,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def disable_warnings
-    @disable_warnings = true
+  def welcome_only
+    @welcome_only = true
   end
   
   def require_login

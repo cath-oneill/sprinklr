@@ -1,39 +1,37 @@
-<div class="row">
-  <div class="columns small-12">
-    <div class="panel">
-    
-      <h3><%= @user.name %>'s Profile</h3>
+
+<div class="panel">
+
+  <h3><%= @user.name %>'s Profile</h3>
 
 
-      <p>
-        <strong>Name:</strong>
-        <%= @user.name %>
-      </p>
+  <p>
+    <strong>Name:</strong>
+    <%= @user.name %>
+  </p>
 
-      <p>
-        <strong>Address:</strong>
-        <%= @user.address %>
-      </p>
+  <p>
+    <strong>Address:</strong>
+    <%= @user.address %>
+  </p>
 
-      <p>
-        <strong>Zip:</strong>
-        <%= @user.zip %>
-      </p>
+  <p>
+    <strong>Zip:</strong>
+    <%= @user.zip %>
+  </p>
 
-      <p>
-        <strong>Contact method:</strong>
-        <% if @user.contact_method == 0 or @user.contact_method.nil? %>
-          You have not yet selected a weekly contact method!
-        <% elsif @user.contact_method == 1 %>
-          You have selected to receive a weekly email at <%= @user.email %>.
-        <% elsif @user.contact_method == 2 %>
-          You have selected to receive a weekly text message at <%= @user.phone %>.
-        <% elsif @user.contact_method == 3 %>
-          You have selected to not receive weekly watering updates and can check out your recommendations online.
-        <% end %>
-      </p>
-      <%= link_to 'Update your Profile Information', edit_user_path(@user), :class => "button radius" %> 
+  <p>
+    <strong>Contact method:</strong>
+    <% if @user.contact_method == 0 or @user.contact_method.nil? %>
+      You have not yet selected a weekly contact method!
+    <% elsif @user.contact_method == 1 %>
+      You have selected to receive a weekly email at <%= @user.email %>.
+    <% elsif @user.contact_method == 2 %>
+      You have selected to receive a weekly text message at <%= @user.phone %>.
+    <% elsif @user.contact_method == 3 %>
+      You have selected to not receive weekly watering updates and can check out your recommendations online.
+    <% end %>
+  </p>
+  <%= link_to 'Update your Profile Information', edit_user_path(@user), :class => "button radius" %> 
 
-    </div>  
-  </div>
-</div>
+</div>  
+
