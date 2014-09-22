@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user
 
   # GET /users/1
   # GET /users/1.json
@@ -13,14 +13,13 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    unless user_params['address'].nil? || user_params['zip'].nil?
+      updated_params = Geocode.run(user_params)
+    end
+    if @user.update(updated_params)
+      redirect_to @user, notice: 'User was successfully updated.'
+    else
+      render :edit
     end
   end
 
@@ -42,6 +41,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :uid, :provider, :address, :zip, :latitude, :longitude, :contact_method, :email, :phone)
+      params.require(:user).permit(:name, :address, :zip, :contact_method, :email, :phone)
     end
 end
