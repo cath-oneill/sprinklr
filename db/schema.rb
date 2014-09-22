@@ -11,10 +11,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140916120137) do
+ActiveRecord::Schema.define(version: 20140922220410) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "schedules", force: true do |t|
+    t.string   "name"
+    t.integer  "start_hr"
+    t.integer  "start_min"
+    t.integer  "end_hr"
+    t.integer  "end_min"
+    t.integer  "day"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "name"
@@ -31,6 +42,22 @@ ActiveRecord::Schema.define(version: 20140916120137) do
     t.string   "profile_pic"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "yards", force: true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.integer  "slope"
+    t.integer  "soil"
+    t.integer  "grass"
+    t.integer  "sprinkler"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "yards_schedules", force: true do |t|
+    t.integer "schedule_id"
+    t.integer "yard_id"
   end
 
 end
