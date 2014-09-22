@@ -12,6 +12,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string :email
       t.string :phone
       t.string :login_email
+      t.string :profile_pic
 
       t.timestamps
     end
