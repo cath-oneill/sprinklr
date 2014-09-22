@@ -26,8 +26,10 @@
   <div class="field">
     <%= f.label :contact_method %><br>
     <%= f.select :contact_method, options_for_select([
-        ["Weekly Email", 0],
-        ["Weekly Text", 1] ], f.object.contact_method
+        ["Please select:", 0],
+        ["Weekly Email", 1],
+        ["Weekly Text", 2],
+        ["No Weekly Contact -- I'll check my recommendations online.", 3] ], f.object.contact_method
       ) %>
   </div>
   <div class="field">
@@ -39,6 +41,6 @@
     <%= f.text_field :phone %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit(:class => "button radius", value: "Save Information") %>
   </div>
 <% end %>
