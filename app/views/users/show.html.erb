@@ -28,9 +28,6 @@
   <%= link_to 'Update your Profile Information', edit_user_path(@user), :class => "button radius" %>
 </div>  
 
-<% if @yards.count == 0 %>
-  <%= link_to 'Add a Yard', new_yard_path, :class => "button columns small-4 medium-3 large-2 small-centered radius" %> 
-<% end %>
 
 <% @yards.each do |yard| %>
 <div class="panel">
@@ -61,3 +58,4 @@
 </div>
 <% end %>
 
+<%= link_to 'Add a Yard', new_yard_path, :class => "button columns small-4 medium-3 large-2 small-centered radius" %> 
