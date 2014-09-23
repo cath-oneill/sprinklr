@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20140916120137) do
     t.string   "zip"
     t.decimal  "latitude"
     t.decimal  "longitude"
-    t.integer  "contact_method"
+    t.string   "contact_method"
     t.string   "email"
     t.string   "phone"
     t.string   "login_email"

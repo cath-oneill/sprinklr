@@ -26,10 +26,10 @@
   <div class="field">
     <label>Your Preferred Contact Method: 
     <%= f.select :contact_method, options_for_select([
-        ["Please select:", 0],
-        ["Weekly Email", 1],
-        ["Weekly Text", 2],
-        ["No Weekly Contact -- I'll check my recommendations online.", 3] ], f.object.contact_method
+        ["Please select:", "no selection"],
+        ["Weekly Email", "email"],
+        ["Weekly Text", "text"],
+        ["No Weekly Contact -- I'll check my recommendations online.", "decline"] ], f.object.contact_method
       ) %></label>
   </div>
   <div class="field">
