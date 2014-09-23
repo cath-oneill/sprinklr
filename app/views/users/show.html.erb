@@ -3,12 +3,6 @@
 
   <h3><%= @user.name %>'s Profile</h3>
 
-
-  <p>
-    <strong>Name:</strong>
-    <%= @user.name %>
-  </p>
-
   <p>
     <strong>Address:</strong>
     <%= @user.address %>
@@ -21,17 +15,53 @@
 
   <p>
     <strong>Contact method:</strong>
-    <% if @user.contact_method == 0 or @user.contact_method.nil? %>
+    <% if @user.contact_method == "no selection" or @user.contact_method.nil? %>
       You have not yet selected a weekly contact method!
-    <% elsif @user.contact_method == 1 %>
+    <% elsif @user.contact_method == "email" %>
       You have selected to receive a weekly email at <%= @user.email %>.
-    <% elsif @user.contact_method == 2 %>
+    <% elsif @user.contact_method == "text" %>
       You have selected to receive a weekly text message at <%= @user.phone %>.
-    <% elsif @user.contact_method == 3 %>
+    <% elsif @user.contact_method == "decline" %>
       You have selected to not receive weekly watering updates and can check out your recommendations online.
     <% end %>
   </p>
-  <%= link_to 'Update your Profile Information', edit_user_path(@user), :class => "button radius" %> 
-
+  <%= link_to 'Update your Profile Information', edit_user_path(@user), :class => "button radius" %>
 </div>  
+
+<% if @yards.count == 0 %>
+  <%= link_to 'Add a Yard', new_yard_path, :class => "button columns small-4 medium-3 large-2 small-centered radius" %> 
+<% end %>
+
+<% @yards.each do |yard| %>
+<div class="panel">
+  
+  <h3><%= yard.name %></h3>
+
+  <p>
+    <strong>Primary Grass Type:</strong>
+    <%= yard.grass %>
+  </p>
+
+  <p>
+    <strong>Slope:</strong>
+    <%= yard.slope %>
+  </p>
+
+  <p>
+    <strong>Soil Type:</strong>
+    <%= yard.soil %>
+  </p>  
+
+  <p>
+    <strong>Sprinkler Style:</strong>
+    <%= yard.sprinkler %>
+  </p>
+
+  <% yard.schedules.each do |sched| %>
+  <p><%= sched.day %> <%= sched.start_hr %>:<%= sched.start_min %> - <%= sched.end_hr %>:<%= sched.end_min %></p>
+  <% end %>
+
+  <%= link_to 'Edit', edit_yard_path(yard), :class => "button radius" %> 
+</div>
+<% end %>
 
