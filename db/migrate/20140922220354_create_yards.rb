@@ -4,10 +4,10 @@ class CreateYards < ActiveRecord::Migration
       t.belongs_to :user
       
       t.string :name
-      t.integer :slope
-      t.integer :soil
-      t.integer :grass
-      t.integer :sprinkler
+      t.string :slope
+      t.string :soil
+      t.string :grass
+      t.srting :sprinkler
 
       t.timestamps
     end

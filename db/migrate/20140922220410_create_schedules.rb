@@ -7,7 +7,7 @@ class CreateSchedules < ActiveRecord::Migration
       t.integer :start_min
       t.integer :end_hr
       t.integer :end_min
-      t.integer :day
+      t.string :day
       
       t.timestamps
     end
