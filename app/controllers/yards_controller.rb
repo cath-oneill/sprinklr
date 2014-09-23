@@ -1,16 +1,6 @@
 class YardsController < ApplicationController
-  before_action :set_yard, only: [:show, :edit, :update, :destroy]
+  before_action :set_yard, only: [:edit, :update, :destroy]
 
-  # GET /yards
-  # GET /yards.json
-  def index
-    @yards = Yard.all
-  end
-
-  # GET /yards/1
-  # GET /yards/1.json
-  def show
-  end
 
   # GET /yards/new
   def new
@@ -38,14 +28,10 @@ class YardsController < ApplicationController
   # PATCH/PUT /yards/1.json
   def update
     @yard.day = GetWateringDay.run(@yard, current_user)
-    respond_to do |format|
-      if @yard.update(yard_params)
-        format.html { redirect_to @current_user, notice: 'Yard was successfully updated.' }
-        format.json { render :show, status: :ok, location: @yard }
-      else
-        format.html { render :edit }
-        format.json { render json: @yard.errors, status: :unprocessable_entity }
-      end
+    if @yard.update(yard_params)
+      redirect_to @current_user, notice: 'Yard was successfully updated.' 
+    else
+      render :edit 
     end
   end
 
@@ -53,10 +39,7 @@ class YardsController < ApplicationController
   # DELETE /yards/1.json
   def destroy
     @yard.destroy
-    respond_to do |format|
-      format.html { redirect_to yards_url, notice: 'Yard was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to yards_url, notice: 'Yard was successfully destroyed.' 
   end
 
   private

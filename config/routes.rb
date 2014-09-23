@@ -5,5 +5,5 @@ Rails.application.routes.draw do
   get "/signout" => "sessions#destroy", :as => :signout  
 
   resources :users, except: [:index, :new, :create, :destroy]
-  resources :yards
+  resources :yards, except: [:index, :show]
 end
