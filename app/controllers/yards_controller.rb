@@ -26,6 +26,7 @@ class YardsController < ApplicationController
   def create
     @yard = Yard.new(yard_params)
     @yard.user_id = current_user.id
+    @yard.day = GetWateringDay.run(@yard, current_user)
     if @yard.save
       redirect_to current_user, notice: 'Yard was successfully created.' 
     else
@@ -36,6 +37,7 @@ class YardsController < ApplicationController
   # PATCH/PUT /yards/1
   # PATCH/PUT /yards/1.json
   def update
+    @yard.day = GetWateringDay.run(@yard, current_user)
     respond_to do |format|
       if @yard.update(yard_params)
         format.html { redirect_to @current_user, notice: 'Yard was successfully updated.' }
