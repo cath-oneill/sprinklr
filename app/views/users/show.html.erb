@@ -9,21 +9,18 @@
   </div>
 
   <div class="columns small-12">
-    <p>
-      <i class="fi-home small"></i> <%= @user.address %>, Austin, TX <%= @user.zip %>
-    </p>
+    <p><i class="fi-home small"></i> <%= @user.address %>, Austin, TX <%= @user.zip %></p>
 
-    <p>
-      <% if @user.contact_method == "no selection" or @user.contact_method.nil? %>
-        <i class="fi-alert small"></i> You have not yet selected a weekly contact method!
-      <% elsif @user.contact_method == "email" %>
-        <i class="fi-laptop small"></i> You have selected to receive a weekly email at <%= @user.email %>.
-      <% elsif @user.contact_method == "text" %>
-        <i class="fi-telephone small"></i> You have selected to receive a weekly text message at <%= @user.phone %>.
-      <% elsif @user.contact_method == "decline" %>
-        <i class="fi-laptop small"></i>  You have selected to not receive weekly watering updates and can check out your recommendations online.
-      <% end %>
-    </p>
+    <% if @user.contact_method == "no selection" or @user.contact_method.nil? %>
+      <p><i class="fi-alert small"></i> You have not yet selected a weekly contact method!</p>
+    <% elsif @user.contact_method == "email" %>
+      <p><i class="fi-laptop small"></i> You have selected to receive a weekly email at <%= @user.email %>.</p>
+    <% elsif @user.contact_method == "text" %>
+      <p><i class="fi-telephone small"></i> You have selected to receive a weekly text message at <%= @user.phone %>.</p>
+    <% elsif @user.contact_method == "decline" %>
+      <p><i class="fi-laptop small"></i>  You have selected to not receive weekly watering updates and can check out your recommendations online.</p>
+    <% end %>
+    
   </div>
 
 </div>  
