@@ -8,5 +8,4 @@ class User < ActiveRecord::Base
       user.login_email = auth["info"]["email"]
     end
   end
-
 end
