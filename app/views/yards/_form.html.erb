@@ -1,0 +1,49 @@
+<%= form_for(@yard) do |f| %>
+  <% if @yard.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@yard.errors.count, "error") %> prohibited this yard from being saved:</h2>
+
+      <ul>
+      <% @yard.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <label>Yard Name: 
+    <%= f.text_field :name, placeholder: "e.g. Front Yard" %></label>
+  </div>
+
+  <div class="field">
+    <p>Is your yard sloped? </p>
+    <%= f.radio_button :slope, "flat" %> <%= f.label :slope, "My yard is flat!" %>
+    <%= f.radio_button :slope, "slight" %> <%= f.label :slope, "My yard is slightly sloped!" %>
+    <%= f.radio_button :slope, "steep" %> <%= f.label :slope, "My yard is very steep!" %>
+  </div>
+
+  <div class="field">
+    <p>What kind of soil do you have? </p>
+    <%= f.radio_button :soil, "clay" %> <%= f.label :soil, "Clay" %>
+    <%= f.radio_button :soil, "loam" %> <%= f.label :soil, "Loam" %>
+  </div>
+
+  <div class="field">
+    <p>Is your yard sloped? </p>
+    <%= f.radio_button :sprinkler, "automatic" %> <%= f.label :sprinkler, "I have an automatic sprinkler system." %>
+    <%= f.radio_button :sprinkler, "rotating" %> <%= f.label :sprinkler, "I have a rotating sprinkler that I connect to a hose." %>
+  </div>
+
+  <div class="field">
+    <p>What kind of grass do you have? </p>
+    <%= f.radio_button :grass, "buffalo" %> <%= f.label :grass, "Super drought-resistant Buffalo grass" %>
+    <%= f.radio_button :grass, "carpetgrass" %> <%= f.label :grass, "Carpet Grass" %>
+  </div>
+
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

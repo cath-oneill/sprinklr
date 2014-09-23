@@ -34,6 +34,9 @@
   }
 }
 
-i:hover {
-  color: #666;
+.sign-in {
+  i:hover, i:active, i:visited, a:hover {
+    color: #666;
+  }
 }
+
