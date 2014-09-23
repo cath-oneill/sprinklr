@@ -25,15 +25,11 @@ class YardsController < ApplicationController
   # POST /yards.json
   def create
     @yard = Yard.new(yard_params)
-
-    respond_to do |format|
-      if @yard.save
-        format.html { redirect_to @yard, notice: 'Yard was successfully created.' }
-        format.json { render :show, status: :created, location: @yard }
-      else
-        format.html { render :new }
-        format.json { render json: @yard.errors, status: :unprocessable_entity }
-      end
+    @yard.user_id = current_user.id
+    if @yard.save
+      redirect_to current_user, notice: 'Yard was successfully created.' 
+    else
+      render :new 
     end
   end
 
@@ -42,7 +38,7 @@ class YardsController < ApplicationController
   def update
     respond_to do |format|
       if @yard.update(yard_params)
-        format.html { redirect_to @yard, notice: 'Yard was successfully updated.' }
+        format.html { redirect_to @current_user, notice: 'Yard was successfully updated.' }
         format.json { render :show, status: :ok, location: @yard }
       else
         format.html { render :edit }
@@ -69,6 +65,6 @@ class YardsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def yard_params
-      params[:yard]
+      params.require(:yard).permit(:grass, :name, :slope, :soil, :sprinkler)
     end
 end

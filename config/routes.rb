@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  resources :schedules
-
-  resources :yards
 
   root :to => 'welcome#index'
 
@@ -9,6 +6,7 @@ Rails.application.routes.draw do
   get "/signout" => "sessions#destroy", :as => :signout  
 
   resources :users, except: [:index, :new, :create, :destroy]
+  resources :yards
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

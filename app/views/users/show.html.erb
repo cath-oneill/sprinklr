@@ -57,10 +57,6 @@
     <%= yard.sprinkler %>
   </p>
 
-  <% yard.schedules.each do |sched| %>
-  <p><%= sched.day %> <%= sched.start_hr %>:<%= sched.start_min %> - <%= sched.end_hr %>:<%= sched.end_min %></p>
-  <% end %>
-
   <%= link_to 'Edit', edit_yard_path(yard), :class => "button radius" %> 
 </div>
 <% end %>

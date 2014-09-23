@@ -12,9 +12,5 @@ class CreateYards < ActiveRecord::Migration
       t.timestamps
     end
 
-    create_table :yards_schedules do |t|
-      t.belongs_to :schedule
-      t.belongs_to :yard
-    end
   end
 end
