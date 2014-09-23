@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 20140922220410) do
     t.integer  "start_min"
     t.integer  "end_hr"
     t.integer  "end_min"
-    t.integer  "day"
+    t.string   "day"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -47,10 +47,10 @@ ActiveRecord::Schema.define(version: 20140922220410) do
   create_table "yards", force: true do |t|
     t.integer  "user_id"
     t.string   "name"
-    t.integer  "slope"
-    t.integer  "soil"
-    t.integer  "grass"
-    t.integer  "sprinkler"
+    t.string   "slope"
+    t.string   "soil"
+    t.string   "grass"
+    t.string   "sprinkler"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
