@@ -10,17 +10,26 @@
 <p class="caption"><a href="http://gardek.deviantart.com/art/Green-grass-134434959"><em>Green Grass</em> by Gardek</a></p>
 
 <div class="row">
+
   <div class="columns small-12">
+
+  <% if !current_user %>
+  <div class="columns small-5 right">
+    <br>
+    <div class="sign-in panel radius">
+        <a href="/auth/google_oauth2">
+          <h3 class="text-center">Sign Up or Sign In with Google!</h3>
+          <div class=" columns medium-4 large-3 medium-centered">
+            <i class="fi-social-google-plus large"></i>
+          </div>
+        </a>
+    </div>
+  </div>
+  <% end %>
+
     <h2>
       What do you get?
     </h2>
-  </div>
-
-  <% if current_user %>
-  <div class="columns small-12">
-  <% else %>
-  <div class="columns small-6">
-  <% end %>
     <ul class="square">
       <li>
         <h5>never forget another watering day and keep your lawn looking great</h5>
@@ -48,18 +57,6 @@
       </li>
     </ul>
   </div>
-  <% if !current_user %>
-  <div class="columns small-5">
-    <div class="sign-in panel radius">
-        <a href="/auth/google_oauth2">
-          <h3 class="text-center">Sign Up or Sign In with Google!</h3>
-          <div class=" columns medium-4 large-3 medium-centered">
-            <i class="fi-social-google-plus large"></i>
-          </div>
-        </a>
-    </div>
-  </div>
-  <% end %>
 </div>
 
 <div class="how">
