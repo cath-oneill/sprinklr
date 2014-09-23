@@ -12,26 +12,27 @@
   <% unless @disable_nav %>
   <%= render 'partials/nav'%>
   <% end %>
-<!-- for everything but welcome page -->
-  <% unless @welcome_only %>
-  <% if !notice.nil? || !alert.nil? %>
-  <br>
-  <div class="row">
-    <div class="columns small-12 medium-8 large-4 small-centered">
-      <div class="panel callout radius">
-        <p class="notice"><%= notice %> <%= alert %></p>     
-      </div>
-    </div>
-  </div>
-  <% end %>
   
+  <!-- for everything but welcome page -->
+  <% unless @welcome_only %>
   <br>
-
   <div class="row">
-    <div class="columns small-12 medium-8">
+    <div class="columns small-12 large-8">
+        <br>
+        
+        <% if !notice.nil? || !alert.nil? %>
+        <div class="row">
+          <div class="columns small-12 medium-8 large-6 small-centered">
+            <div class="panel callout radius">
+              <p class="notice"><%= notice %> <%= alert %></p>     
+            </div>
+          </div>
+        </div>
+        <% end %>
+      
       <%= yield %>  
     </div>
-    <div class="columns medium-3">
+    <div class="columns large-3 show-for-large-up panel">
       <%= render 'partials/sidebar'%>    
     </div>
   </div>
