@@ -5,17 +5,26 @@
 
 .splash {
   margin-top: 0;
-  padding-top: 15vh;
   background-image: url(image-path('Green_grass_by_Gardek.jpg'));
   background-size: 100%;
   height: 75vh;
   h1 {
+    padding-top: 15vh;
     font-size: 7rem;
     @extend .sprinklr;
   }
-  h1, h3, p {
+  h1, h3, h5, p {
     // color: $cloud;
     margin: 0;
+  }
+  h5 {
+    margin-top: 1em;
+    font-size: 1.5em;
+    font-variant: small-caps;
+    font-weight: bold;
+  }
+  img {
+    max-height: 65vh;
   }
 }
 
