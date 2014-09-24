@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 20140924194533) do
     t.decimal  "longitude"
     t.string   "kind"
     t.string   "code"
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

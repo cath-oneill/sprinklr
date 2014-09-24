@@ -5,6 +5,7 @@ class CreateWeatherStations < ActiveRecord::Migration
       t.decimal :longitude
       t.string :kind
       t.string :code
+      t.string :name
 
       t.timestamps
     end
