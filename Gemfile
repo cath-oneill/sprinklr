@@ -8,6 +8,8 @@ gem 'figaro'
 gem 'rails', '4.1.6'
 #use postgres as database for Active Record
 gem 'pg'
+#use sidekiq for delayed jobs
+gem 'sidekiq'
 
 gem 'sass', '3.4.3'
 gem 'uglifier', '>= 1.3.0'
