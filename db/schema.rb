@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140922220354) do
+ActiveRecord::Schema.define(version: 20140923225402) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "recommendations", force: true do |t|
+    t.integer  "yards_id"
+    t.float    "inches"
+    t.integer  "minutes"
+    t.integer  "cycles"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "name"
@@ -40,6 +49,7 @@ ActiveRecord::Schema.define(version: 20140922220354) do
     t.string   "soil"
     t.string   "grass"
     t.string   "sprinkler"
+    t.string   "sprinkler_flow"
     t.string   "day"
     t.datetime "created_at"
     t.datetime "updated_at"

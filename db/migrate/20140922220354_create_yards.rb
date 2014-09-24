@@ -8,6 +8,7 @@ class CreateYards < ActiveRecord::Migration
       t.string :soil
       t.string :grass
       t.string :sprinkler
+      t.string :sprinkler_flow
       t.string :day
 
       t.timestamps
