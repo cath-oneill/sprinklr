@@ -15,6 +15,8 @@ gem 'sass', '3.4.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'foundation-rails', '5.4.4.0'
 
+gem 'geocoder'
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks

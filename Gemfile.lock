@@ -57,6 +57,7 @@ GEM
     foundation-rails (5.4.4.0)
       railties (>= 3.1.0)
       sass (>= 3.2.0)
+    geocoder (1.2.5)
     hashie (3.3.1)
     hike (1.2.3)
     hirb (0.7.2)
@@ -180,6 +181,7 @@ DEPENDENCIES
   binding_of_caller
   figaro
   foundation-rails (= 5.4.4.0)
+  geocoder
   hirb
   jbuilder (~> 2.0)
   jquery-rails

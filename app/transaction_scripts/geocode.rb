@@ -3,23 +3,13 @@ require 'json'
 
 class Geocode
   def self.run(user_id, address, zip_code)
-    addr = address.split(" ").join("%20")
-    zip = zip_code.split(" ").join("%20")
-    url = "http://maps.googleapis.com/maps/api/geocode/json?address=%22#{addr}%20#{zip}%22"
-    uri = URI(url)
-    data = Net::HTTP.get(uri)
-    json = JSON.parse(data)
-
-    if json['status'] != 'OK'
-      return :incomplete_address
-    end
-    
-    latitude = json['results'][0]['geometry']['location']['lat']
-    longitude = json['results'][0]['geometry']['location']['lng']
-
     user = User.find(user_id)
-    user.latitude = latitude
-    user.longitude = longitude
+    response = Geocoder.search("#{address} #{zip_code}")
+    if geo = response.first
+        #user.formatted_address = geo.formatted_address
+        user.latitude = geo.latitude
+        user.longitude = geo.longitude
+    end
     user.save
   end
 end
