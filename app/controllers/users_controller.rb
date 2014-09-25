@@ -14,10 +14,9 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    need_to_update = @user.address != user_params['address'] || @user.zip != user_params['zip']
     if @user.update(user_params)
-      unless @user.address.nil? || @user.zip.nil?
-        GeocodeWorker.perform_async(@user.id, @user.address, @user.zip)
-      end
+      GeocodeWorker.perform_async(@user.id, @user.address, @user.zip) if need_to_update
       redirect_to @user, notice: 'User was successfully updated.'
     else
       render :edit, notice: 'Please fill out all required fields.'
