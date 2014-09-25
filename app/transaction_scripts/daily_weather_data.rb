@@ -2,7 +2,7 @@ require 'net/http'
 require 'json'
 
 class DailyWeatherData
-  def self.run
+  def self.run(query = "yesterday") #alternately put in history_YYYYMMDD
     weather_stations = WeatherStation.all
 
     #select stations near users & always select Bergstrom for fallback
@@ -10,9 +10,9 @@ class DailyWeatherData
 
     active_weather_stations.each do |sta|
       if sta.kind == 'airport'
-        url = "http://api.wunderground.com/api/#{ENV["WUNDERGROUND_KEY"]}/yesterday/q/#{sta.code}.json"
+        url = "http://api.wunderground.com/api/#{ENV["WUNDERGROUND_KEY"]}/#{query}/q/#{sta.code}.json"
       elsif sta.kind = 'pws'
-        url = "http://api.wunderground.com/api/#{ENV["WUNDERGROUND_KEY"]}/yesterday/q/pws:#{sta.code}.json"
+        url = "http://api.wunderground.com/api/#{ENV["WUNDERGROUND_KEY"]}/#{query}/q/pws:#{sta.code}.json"
       end
       uri = URI(url)
       data = Net::HTTP.get(uri)
