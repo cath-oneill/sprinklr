@@ -6,6 +6,11 @@ namespace :weather do
     puts 'I finished looking up the stations and sticking them in the DB!'
   end
 
+  task :get_solar_data => :environment do
+    GetSolarData.run
+    puts "Done putting solar data in the DB!"
+  end
+  
   task :get_weather_data do
     puts "Get some weather data info!"
   end
