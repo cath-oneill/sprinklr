@@ -9,8 +9,11 @@
   </div>
 
   <div class="columns small-12">
-    <p><i class="fi-home small"></i> <%= @user.address %>, Austin, TX <%= @user.zip %></p>
-
+    <% if @user.formatted_address.nil? %>
+      <p><i class="fi-home small"></i> <%= @user.address %>, <%= @user.zip %></p>
+    <% else %>
+      <p><i class="fi-home small"></i> <%= @user.formatted_address %></p>
+    <% end %>
     <% if @user.contact_method == "no selection" or @user.contact_method.nil? %>
       <p><i class="fi-alert small"></i> You have not yet selected a weekly contact method!</p>
     <% elsif @user.contact_method == "email" %>
