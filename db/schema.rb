@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140925162624) do
+ActiveRecord::Schema.define(version: 20140925183449) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,6 +52,22 @@ ActiveRecord::Schema.define(version: 20140925162624) do
   end
 
   add_index "users", ["weather_station_id"], name: "index_users_on_weather_station_id", using: :btree
+
+  create_table "weather_data", force: true do |t|
+    t.integer  "weather_station_id"
+    t.date     "date"
+    t.float    "mean_temperature"
+    t.float    "minimum_temperature"
+    t.float    "maximum_temperature"
+    t.float    "wind_speed"
+    t.float    "minimum_humidity"
+    t.float    "maximum_humidity"
+    t.float    "minimum_dewpoint"
+    t.float    "maximum_dewpoint"
+    t.float    "precipitation"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "weather_stations", force: true do |t|
     t.decimal  "latitude"
