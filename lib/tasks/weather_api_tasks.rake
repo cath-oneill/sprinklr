@@ -1,6 +1,6 @@
 require_relative '../../app/transaction_scripts/lookup_weather_stations.rb'
 
-namespace :weather do
+namespace :weather_data do
   task :lookup_stations => :environment do
     LookupWeatherStations.run
     puts 'I finished looking up the stations and sticking new ones in the DB!'

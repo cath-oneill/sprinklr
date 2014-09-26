@@ -1,10 +1,13 @@
-require 'date'
+class Evapotranspiration
 
-class Evapotranspiration(station_id, date)
-  @station = WeatherStation.find(station_id)
-  @report = @station.weather_datas.find_by(date: date)
-  @day_of_year = Date.parse(date).yday
-  @solar_radiation = SolarData.find_by(date: date).solar_reading
+  def self.run(station_id, date)
+    @station = WeatherStation.find(station_id)
+    @day_of_year = date.yday
+    @report = @station.weather_datas.find_by(date: date)
+    @solar_radiation = SolarData.find_by(date: date).solar_reading
+    sol_in_mm = et_wind + et_rad
+    return sol_in_mm/25.4
+  end  
 
   def self.slope_of_vapor
     step1 = 4098.0 * saturation_vapor(@report.mean_temperature)
@@ -16,49 +19,49 @@ class Evapotranspiration(station_id, date)
     elevation = 149 #average elevation of Austin in meters; plays a very minor role on evapotranspiration until high altitude
     step1 = (293.0 - (0.0065 * elevation)) / 293.0
     step2 = step1**5.26
-   return  sol = 101.3 * step2 
+    return 101.3 * step2 
   end
 
   def self.psychometric_constant
-   return  sol = 0.000665 * atmospheric_pressure  
+   return 0.000665 * atmospheric_pressure  
   end
 
   def self.delta_term
-    step1 = psychometric_constant * (1.0 + (0.34 * @reporreturn t.mean_wind_speed))
-    sol =  slope_of_vapor / (slope_of_vapor + step1)  
+    step1 = psychometric_constant * (1.0 + (0.34 * @report.wind_speed))
+    return  slope_of_vapor / (slope_of_vapor + step1)  
   end
 
   def self.psy_term
-    step1 = psychometric_constant * (1.0 + (0.34 * @report.meanreturn _wind_speed))
-    sol = psychometric_constant / (slope_of_vapor + step1)  
+    step1 = psychometric_constant * (1.0 + (0.34 * @report.wind_speed))
+    return psychometric_constant / (slope_of_vapor + step1)  
   end
 
   def self.temperature_term
-   return  sol = (900.0 /(@report.mean_temperature + 273.0)) * @report.mean_wind_speed  
+   return (900.0 /(@report.mean_temperature + 273.0)) * @report.wind_speed  
   end
 
   def self.saturation_vapor(temp)
-    step1 = (7.5 * temp) / (temp + 237return .3)
-    sol =  0.6108 * (10**(step1))  
+    step1 = (7.5 * temp) / (temp + 237.3)
+    return 0.6108 * (10**(step1))  
   end
 
   def self.mean_saturation_vapor
-   return  sol = (saturation_vapor(@report.min_temperature) + saturation_vapor(@report.max_temperature))/2.0  
+   return (saturation_vapor(@report.minimum_temperature) + saturation_vapor(@report.maximum_temperature))/2.0  
   end
 
   def self.actual_vapor_pressure
-   return  sol = saturation_vapor(@report.min_temperature) * (@report.max_humidity/100.0)  
+   return saturation_vapor(@report.minimum_temperature) * (@report.maximum_humidity/100.0)  
   end
 
   def self.inverse_relative_distance_sun
-    step1 = (2 * Math::PI * @day_of_year)/36return 5
-    sol = (Math.cos(step1) * 0.033) + 1  
+    step1 = (2 * Math::PI * @day_of_year)/365
+    return (Math.cos(step1) * 0.033) + 1  
   end
 
   def self.solar_declanation
     step1 = (2 * Math::PI * @day_of_year)/365
     step2 = step1 - 1.39
-   return  sol = 0.409 * Math.sin(step2) 
+    return 0.409 * Math.sin(step2) 
   end
 
   def self.latitude_in_rads
@@ -89,7 +92,7 @@ class Evapotranspiration(station_id, date)
   def self.net_outgoing_radiation
     step1 = 1.35 * (net_solar_radiation/clear_sky_solar_radiation) - 0.35
     step2 = 0.34 - 0.14 * (Math.sqrt(actual_vapor_pressure))
-    step3 = (@report.max_temperature + 273.16)**4 + (@report.min_temperature + 273.16)**4
+    step3 = (@report.maximum_temperature + 273.16)**4 + (@report.minimum_temperature + 273.16)**4
     step4 = step3/2
     step5 = 4.903 * 10**-9
     return step5 * step4 * step1 * step2
@@ -107,9 +110,5 @@ class Evapotranspiration(station_id, date)
     return psy_term * temperature_term * (mean_saturation_vapor - actual_vapor_pressure)
   end
 
-  def self.run
-    sol_in_mm = et_wind + et_rad
-    return sol_in_mm/25.4
-  end
 end
 
