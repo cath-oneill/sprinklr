@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     if @user.update(user_params) && @yard.update(yard_params)
       GetWateringDay.run(@yard, @user)
       GeocodeWorker.perform_async(@user.id, @user.address, @user.zip) if need_to_update_user
-      UserMailer.delay_for(5.minutes).welcome_email_success(@user.id)
+      UserMailer.delay_for(60.minutes).welcome_email_success(@user.id)
       redirect_to @user, notice: 'User was successfully updated.'
     else
       render :edit, notice: 'Please fill out all required fields.'
