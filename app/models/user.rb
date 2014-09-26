@@ -3,13 +3,13 @@ class User < ActiveRecord::Base
   belongs_to :weather_station
   
   def self.create_with_omniauth(auth)
-    User.create(
+    user = User.create(
       provider: auth["provider"],
       uid: auth["uid"],
       name: auth["info"]["name"],
       email: auth["info"]["email"],
       login_email: auth["info"]["email"],
+      yard: Yard.create
     )
-    Yard.create(user_id: user.id)
   end
 end

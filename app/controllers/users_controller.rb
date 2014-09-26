@@ -14,10 +14,10 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    need_to_update = @user.address != user_params['address'] || @user.zip != user_params['zip']
+    need_to_update_user = @user.address != user_params['address'] || @user.zip != user_params['zip']
     if @user.update(user_params) && @yard.update(yard_params)
       GetWateringDay.run(@yard, @user)
-      GeocodeWorker.perform_async(@user.id, @user.address, @user.zip) if need_to_update
+      GeocodeWorker.perform_async(@user.id, @user.address, @user.zip) if need_to_update_user
       UserMailer.delay_for(5.minutes).welcome_email_success(@user.id)
       redirect_to @user, notice: 'User was successfully updated.'
     else
