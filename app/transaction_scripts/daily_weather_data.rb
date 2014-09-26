@@ -35,6 +35,9 @@ class DailyWeatherData
         )
       end
 
+      unless EtoCalculation.find_by(weather_station_id: sta.id, date: date)
+        Evapotranspiration.run(sta.id, date)
+      end
     end
 
   end

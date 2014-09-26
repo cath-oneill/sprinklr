@@ -12,7 +12,7 @@ namespace :weather_data do
   end
   
   task :get_weather_data => :environment do
-    DailyWeatherData.run
+    DailyWeatherData.run ##Also runs evapotranspiration -- MUST RUN AFTER SOLAR DATA!
     puts "Got some weather data info!"
   end
 
@@ -21,6 +21,6 @@ namespace :weather_data do
     puts 'Done updating stations.'
   end
 
-  task :daily => [:get_weather_data, :get_solar_data]
+  task :daily => [ :get_solar_data, :get_weather_data]
   task :weekly => [:lookup_stations, :update_all_closest_stations]
 end

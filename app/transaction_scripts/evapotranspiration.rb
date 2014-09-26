@@ -6,7 +6,11 @@ class Evapotranspiration
     @report = @station.weather_datas.find_by(date: date)
     @solar_radiation = SolarData.find_by(date: date).solar_reading
     sol_in_mm = et_wind + et_rad
-    return sol_in_mm/25.4
+    eto = sol_in_mm/25.4
+    EtoCalculation.create(
+      weather_station_id: station_id,
+      date: date,
+      eto: eto)
   end  
 
   def self.slope_of_vapor
