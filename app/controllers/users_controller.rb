@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    @yards = current_user.yards
+    @yard = current_user.yard
   end
 
   # GET /users/1/edit
@@ -17,6 +17,7 @@ class UsersController < ApplicationController
     need_to_update = @user.address != user_params['address'] || @user.zip != user_params['zip']
     if @user.update(user_params)
       GeocodeWorker.perform_async(@user.id, @user.address, @user.zip) if need_to_update
+      UserMailer.delay_for(5.minutes).welcome_email_success(@user.id)
       redirect_to @user, notice: 'User was successfully updated.'
     else
       render :edit, notice: 'Please fill out all required fields.'

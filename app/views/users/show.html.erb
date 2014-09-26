@@ -29,11 +29,11 @@
 </div>  
 
 
-<% @yards.each do |yard| %>
+<% if @yard %>
 <div class="yard-info row">
   <div class="columns small-12">
-    <h3 class="left"><%= yard.name %></h3> 
-    <%= link_to edit_yard_path(yard) do %>
+    <h3 class="left">Yard</h3> 
+    <%= link_to edit_yard_path(@yard) do %>
       <i class="fi-pencil medium right"></i>
     <% end %>
   </div>
@@ -41,22 +41,22 @@
   <div class="columns small-12">
     <p>
       <strong>Primary Grass Type:</strong>
-      <%= yard.grass %>
+      <%= @yard.grass %>
     </p>
 
     <p>
       <strong>Slope:</strong>
-      <%= yard.slope %>
+      <%= @yard.slope %>
     </p>
 
     <p>
       <strong>Soil Type:</strong>
-      <%= yard.soil %>
+      <%= @yard.soil %>
     </p>  
 
     <p>
       <strong>Sprinkler Style:</strong>
-      <%= yard.sprinkler %>
+      <%= @yard.sprinkler %>
     </p>
   </div>
 </div>

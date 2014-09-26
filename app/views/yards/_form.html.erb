@@ -12,11 +12,6 @@
   <% end %>
 
   <div class="field">
-    <label>Yard Name: 
-    <%= f.text_field :name, placeholder: "e.g. Front Yard" %></label>
-  </div>
-
-  <div class="field">
     <p>Is your yard sloped? </p>
     <%= f.radio_button :slope, "flat" %> <%= f.label :slope, "My yard is flat!" %>
     <%= f.radio_button :slope, "slight" %> <%= f.label :slope, "My yard is slightly sloped!" %>

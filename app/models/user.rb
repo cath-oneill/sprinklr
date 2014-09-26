@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :yards
+  has_one :yard
   belongs_to :weather_station
   
   def self.create_with_omniauth(auth)
