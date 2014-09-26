@@ -14,8 +14,7 @@
         <a href="#">Menu</a>
         <ul class="dropdown">
           <li><a href="/users/<%= current_user.id %>">View Your Profile</a></li>
-          <li><%= link_to 'Update your Profile', edit_user_path(current_user) %></li>
-          <li><%= link_to 'Add a Yard', new_yard_path %></li>        
+          <li><%= link_to 'Update your Profile', edit_user_path(current_user) %></li>       
           <li><a href="/signout">Signout</a></li>
         </ul>
       </li>
