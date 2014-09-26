@@ -10,5 +10,6 @@ class User < ActiveRecord::Base
       user.email = auth["info"]["email"]
       user.login_email = auth["info"]["email"]
     end
+    Yard.create(user_id: user.id)
   end
 end

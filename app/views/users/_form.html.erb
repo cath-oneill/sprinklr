@@ -40,6 +40,34 @@
     <label for="">Phone:
     <%= f.text_field :phone %></label>
   </div>
+
+<%= fields_for :yard do |g| %>
+  <div class="field">
+    <p>Is your yard sloped? </p>
+    <%= g.radio_button :slope, "flat" %> <%= g.label :slope, "My yard is flat!" %>
+    <%= g.radio_button :slope, "slight" %> <%= g.label :slope, "My yard is slightly sloped!" %>
+    <%= g.radio_button :slope, "steep" %> <%= g.label :slope, "My yard is very steep!" %>
+  </div>
+
+  <div class="field">
+    <p>What kind of soil do you have? </p>
+    <%= g.radio_button :soil, "clay" %> <%= g.label :soil, "Clay" %>
+    <%= g.radio_button :soil, "loam" %> <%= g.label :soil, "Loam" %>
+  </div>
+
+  <div class="field">
+    <p>Is your yard sloped? </p>
+    <%= g.radio_button :sprinkler, "automatic" %> <%= g.label :sprinkler, "I have an automatic sprinkler system." %>
+    <%= g.radio_button :sprinkler, "rotating" %> <%= g.label :sprinkler, "I have a rotating sprinkler that I connect to a hose." %>
+  </div>
+
+  <div class="field">
+    <p>What kind of grass do you have? </p>
+    <%= g.radio_button :grass, "buffalo" %> <%= g.label :grass, "Super drought-resistant Buffalo grass" %>
+    <%= g.radio_button :grass, "carpetgrass" %> <%= g.label :grass, "Carpet Grass" %>
+  </div>
+  <% end %>
+
   <div class="actions">
     <%= f.submit(:class => "button radius", value: "Save Information") %>
   </div>
