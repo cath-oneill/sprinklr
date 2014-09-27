@@ -5,10 +5,7 @@ class DailyWeatherData
   def self.run(query = "yesterday") #alternately put in history_YYYYMMDD
     weather_stations = WeatherStation.all
 
-    #select stations near users & always select Bergstrom for fallback
-    active_weather_stations = weather_stations.select {|sta| sta.users.length > 0 || sta.code == "KAUS"}
-
-    active_weather_stations.each do |sta|
+    weather_stations.each do |sta|
       if sta.kind == 'airport'
         url = "http://api.wunderground.com/api/#{ENV["WUNDERGROUND_KEY"]}/#{query}/q/#{sta.code}.json"
       elsif sta.kind = 'pws'
