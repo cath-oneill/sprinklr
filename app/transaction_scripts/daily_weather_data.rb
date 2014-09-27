@@ -3,7 +3,7 @@ require 'json'
 
 class DailyWeatherData
   def self.run(query = "yesterday") #alternately put in history_YYYYMMDD
-    weather_stations = WeatherStation.all
+    weather_stations = WeatherStation.where(bad_data: false)
 
     weather_stations.each do |sta|
       if sta.kind == 'airport'
