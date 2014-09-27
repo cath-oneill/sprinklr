@@ -3,9 +3,10 @@ class RecommendationsController < ApplicationController
   # GET /recommendations
   # GET /recommendations.json
   def index
+    PrepareRecommendation.run
     @user = current_user
-    @yards = current_user.yards
-    @recommendations = @yards.map {|x| x.recommendations}
+    @yard = current_user.yard
+    @recommendations = @yard.recommendations
   end
 
   # GET /recommendations/1
