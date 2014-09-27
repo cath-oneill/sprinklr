@@ -3,7 +3,6 @@ class RecommendationsController < ApplicationController
   # GET /recommendations
   # GET /recommendations.json
   def index
-    PrepareRecommendation.run
     @user = current_user
     @yard = current_user.yard
     @recommendations = @yard.recommendations
