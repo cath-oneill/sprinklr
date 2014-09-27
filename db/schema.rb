@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140926233255) do
+ActiveRecord::Schema.define(version: 20140927201536) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,11 +26,16 @@ ActiveRecord::Schema.define(version: 20140926233255) do
 
   create_table "recommendations", force: true do |t|
     t.integer  "yards_id"
-    t.float    "inches"
-    t.integer  "minutes"
-    t.integer  "cycles"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "weekly_precipitation"
+    t.float    "weekly_eto"
+    t.float    "min_req_water"
+    t.float    "max_req_water"
+    t.float    "min_irrigation"
+    t.float    "max_irrigation"
+    t.integer  "min_minutes"
+    t.integer  "max_minutes"
   end
 
   create_table "solar_data", force: true do |t|
@@ -89,8 +94,6 @@ ActiveRecord::Schema.define(version: 20140926233255) do
 
   create_table "yards", force: true do |t|
     t.integer  "user_id"
-    t.string   "slope"
-    t.string   "soil"
     t.string   "grass"
     t.string   "sprinkler"
     t.string   "sprinkler_flow"
