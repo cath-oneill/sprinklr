@@ -9,12 +9,16 @@ class GetWateringDay
       
       if street_number.even? && yard.sprinkler == "automatic"
         yard.day = "Thursday"
+        yard.day_number = 4
       elsif street_number.odd? && yard.sprinkler == "automatic"
         yard.day = "Wednesday"
+        yard.day_number = 3
       elsif street_number.even? #hose-end sprinklers
         yard.day = "Sunday"
+        yard.day_number = 0
       elsif street_number.odd? #hose-end sprinklers
         yard.day = "Saturday"
+        yard.day_number = 6
       end
     end
     yard.save
