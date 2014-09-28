@@ -1,7 +1,7 @@
 class RecommendationsController < ApplicationController
 
 
-  # GET /recommendation
+  # GET /plan
   # GET /recommendation.json
   def current
     @user = current_user

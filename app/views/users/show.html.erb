@@ -3,8 +3,8 @@
 
   <div class="columns small-12 medium-8">
 
-      <h2 class="columns small-8"><%= @user.name %>'s Profile</h2> 
-      <%= link_to edit_user_path(@user) do %>
+      <h2 class="columns small-9"><%= @user.name %>'s Profile</h2> 
+      <%= link_to edit_path do %>
         <i class="fi-pencil medium columns small-2"></i>
       <% end %>
 
@@ -45,8 +45,8 @@
   </div>
 </div>
       
-    <h3 class=" columns small-8">Your Watering Plans</h3>
-    <%=link_to user_recommendation_path(@user) do %>
+    <h3 class=" columns small-9">Your Watering Plans</h3>
+    <%=link_to plan_path do %>
     <i class="fi-magnifying-glass medium columns small-2"></i>
     <% end %>
 

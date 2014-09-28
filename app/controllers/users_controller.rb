@@ -2,13 +2,12 @@ class UsersController < ApplicationController
   before_action :set_user
   before_action :set_yard
 
-  # GET /users/1
-  # GET /users/1.json
+  # GET /profile
   def show
     @recommendations = @yard.recommendations.order(created_at: :desc)
   end
 
-  # GET /users/1/edit
+  # GET /edit
   def edit
   end
 
@@ -19,7 +18,7 @@ class UsersController < ApplicationController
     if @user.update(user_params) && @yard.update(yard_params)
       GetWateringDay.run(@yard, @user)
       GeocodeWorker.perform_async(@user.id, @user.address, @user.zip) if need_to_update_user
-      redirect_to @user, notice: 'User was successfully updated.'
+      redirect_to profile_path, notice: 'User was successfully updated.'
     else
       render :edit, notice: 'Please fill out all required fields.'
     end

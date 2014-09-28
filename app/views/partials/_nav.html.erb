@@ -13,10 +13,10 @@
       <li class="has-dropdown">
         <a href="#">Menu</a>
         <ul class="dropdown">
-          <li><a href="/users/<%= current_user.id %>">View Your Profile</a></li>
-          <li><%= link_to 'Update your Profile', edit_user_path(current_user) %></li>       
-          <li><%= link_to 'Current Plan', user_recommendation_path(current_user) %></li>       
-          <li><a href="/signout">Signout</a></li>
+          <li><%= link_to 'View Your Profile', profile_path %></li>
+          <li><%= link_to 'Update your Profile', edit_path %></li>       
+          <li><%= link_to 'Current Plan', plan_path %></li>       
+          <li><%= link_to 'Sign Out', signout_path %></li>
         </ul>
       </li>
     </ul>
