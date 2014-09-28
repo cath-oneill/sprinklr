@@ -1,6 +1,6 @@
 <div class="row">
   <div class="columns small-12 medium-9">
-    <h2>Your Watering Plan: <%= @watering_date.strftime('%A, %b %d') %></h2>
+    <h2>Your Watering Plan: <%= @recommendation.watering_day.strftime('%A, %b %d') %></h2>
 
     <div class="panel">
       
@@ -53,7 +53,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @reports.each do |r| %>
+    <% @weather_reports.each do |r| %>
     <tr>
       <td><%= r.date %></td>
       <td><%= (r.maximum_temperature*9/5 + 32).round(2) %>F</td>
