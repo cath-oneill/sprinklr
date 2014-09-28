@@ -8,5 +8,6 @@ Rails.application.routes.draw do
   resources :users, except: [:index, :new, :create, :destroy] do
     get "/recommendation" => "recommendations#current"
   end
-    
+
+  
 end
