@@ -8,8 +8,11 @@ gem 'figaro'
 gem 'rails', '4.1.6'
 #use postgres as database for Active Record
 gem 'pg'
+
 #use sidekiq for delayed jobs
+#sinatra required for web monitoring of sinatra jobs
 gem 'sidekiq'
+gem 'sinatra', '>= 1.3.0', :require => nil
 
 gem 'sass', '3.4.3'
 gem 'uglifier', '>= 1.3.0'
