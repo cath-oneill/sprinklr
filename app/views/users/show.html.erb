@@ -40,40 +40,42 @@
   </div>
    
 
+<% if @recommendations.length > 0 %>      
   <div class="row space-top">
     <div class="columns small-11 border-top">
+    </div>
   </div>
-</div>
-      
     <h3 class=" columns small-9">Your Watering Plans</h3>
     <%=link_to plan_path do %>
     <i class="fi-magnifying-glass medium columns small-2"></i>
     <% end %>
 
-<div class="row">
-  <div class="columns small-12">
+  <div class="row">
+    <div class="columns small-12">
     
     <table class="space-top">
       <thead>
         <tr>
           <th>Watering Day</th>
           <th>Suggested Watering</th>
+          <th>Suggested Minutes</th>
         </tr>
       </thead>
 
       <tbody>
         <% @recommendations.each do |recommendation| %>
-            <% watering_date = recommendation.created_at.to_date + 1 %>
-            <td><%= watering_date.strftime('%A, %B %d, %Y') %></td>
+            <td><%= recommendation.watering_day.strftime('%A, %B %d, %Y') %></td>
             <td><%= recommendation.min_irrigation.round(2) %> - <%= recommendation.max_irrigation.round(2) %> inches</td>
+            <td><%= recommendation.min_minutes %> - <%= recommendation.max_minutes %> minutes</td>
         <% end %>
       </tbody>
     </table>
+    </div>
   </div>
-</div>
+<% end %>
     
 
-    </div>
+  </div> <!-- end left column -->
 
 
 
