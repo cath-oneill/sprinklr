@@ -38,7 +38,7 @@ class PrepareRecommendation
     end
 
     recommendation = Recommendation.new 
-    recommendation.yards_id = user.yard.id
+    recommendation.yard_id = user.yard.id
 
     #sum of weekly precipitation and weekly eto
     recommendation.weekly_precipitation = weather_reports.map{|x| x.precipitation}.inject(:+)

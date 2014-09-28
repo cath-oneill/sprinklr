@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140927211615) do
+ActiveRecord::Schema.define(version: 20140927234940) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,7 +25,6 @@ ActiveRecord::Schema.define(version: 20140927211615) do
   add_index "eto_calculations", ["weather_station_id"], name: "index_eto_calculations_on_weather_station_id", using: :btree
 
   create_table "recommendations", force: true do |t|
-    t.integer  "yards_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.float    "weekly_precipitation"
@@ -36,7 +35,10 @@ ActiveRecord::Schema.define(version: 20140927211615) do
     t.float    "max_irrigation"
     t.integer  "min_minutes"
     t.integer  "max_minutes"
+    t.integer  "yard_id"
   end
+
+  add_index "recommendations", ["yard_id"], name: "index_recommendations_on_yard_id", using: :btree
 
   create_table "solar_data", force: true do |t|
     t.date     "date"
