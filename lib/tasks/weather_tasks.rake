@@ -19,8 +19,8 @@ namespace :weather do
     puts "Got some weather data info and calculated evapotranspiration!"
   end
 
-  task :recommendations_by_date, [:date_string] => :environment do |task, args|
-    RunAllRecommendations.run("#{args.date_string}")
+  task :recommendations_by_date, [:month, :date, :year] => :environment do |task, args|
+    RunAllRecommendations.run("#{args.month} #{args.date}, #{args.year}")
   end
 
   task :recommendations => :environment do 

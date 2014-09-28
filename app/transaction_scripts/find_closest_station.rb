@@ -2,7 +2,8 @@ class FindClosestStation
   def self.run(latitude, longitude, user_id)
     nearby_stations = WeatherStation.near("#{latitude}, #{longitude}", 5, order: "distance")
     user = User.find(user_id)
-    if closest = nearby_stations.first && !closest.bad_data
+    closest = nearby_stations.first 
+    unless closest.bad_data || closest.nil?
       user.weather_station_id = closest.id
       user.save
     end

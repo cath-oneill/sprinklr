@@ -12,6 +12,7 @@ class PrepareRecommendation
     beginning_of_week = date - 7
     end_of_week = date - 1
     month = date.month
+    watering_day = date + 1
 
     #collect corresponding weather and eto data
     closest_sta = user.weather_station
@@ -39,6 +40,7 @@ class PrepareRecommendation
 
     recommendation = Recommendation.new 
     recommendation.yard_id = user.yard.id
+    recommendation.watering_day = watering_day 
 
     #sum of weekly precipitation and weekly eto
     recommendation.weekly_precipitation = weather_reports.map{|x| x.precipitation}.inject(:+)
@@ -94,17 +96,16 @@ class PrepareRecommendation
     recommendation.max_minutes = recommendation.max_irrigation * sprinkler_rate
     
     #recommendation prepared for tomorrow's watering day
-    recommendation.watering_day = date + 1  
 
     recommendation.save
 
     #put weather & eto data in join table
     weather_reports.each do |x|
-      recommendation.weather_report.create(weather_data_id: x.id)
+      recommendation.weather_reports.create(weather_data_id: x.id)
     end
 
     eto_calcs.each do |x|
-      recommendation.eto_report.create(eto_calculation_id: x.id)
+      recommendation.eto_reports.create(eto_calculation_id: x.id)
     end
 
     puts "Recommendation created for #{user.name}"
