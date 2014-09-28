@@ -89,12 +89,24 @@ class PrepareRecommendation
       sprinkler_rate = user.yard.sprinkler_flow
     end
 
+    #sprinkler rate calculation of minutes
     recommendation.min_minutes = recommendation.min_irrigation * sprinkler_rate
     recommendation.max_minutes = recommendation.max_irrigation * sprinkler_rate
-      
-    #sprinkler rate calculation of minutes
+    
+    #recommendation prepared for tomorrow's watering day
+    recommendation.watering_day = date + 1  
 
     recommendation.save
+
+    #put weather & eto data in join table
+    weather_reports.each do |x|
+      recommendation.weather_report.create(weather_data_id: x.id)
+    end
+
+    eto_calcs.each do |x|
+      recommendation.eto_report.create(eto_calculation_id: x.id)
+    end
+
     puts "Recommendation created for #{user.name}"
   end
 end
