@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @recommendations = @yard.recommendations.order(created_at: :desc)
   end
 
   # GET /users/1/edit

@@ -1,36 +1,44 @@
-<h2>Your Watering Plan: <%= @watering_date.strftime('%A, %b %d') %></h2>
+<div class="row">
+  <div class="columns small-12 medium-9">
+    <h2>Your Watering Plan: <%= @watering_date.strftime('%A, %b %d') %></h2>
 
-<div class="panel">
-  
-<h4>Inches of Water: <%= @recommendation.min_irrigation.round(2) %> - <%= @recommendation.max_irrigation.round(2) %> inches</h4>
+    <div class="panel">
+      
+    <h4>Inches of Water: <%= @recommendation.min_irrigation.round(2) %> - <%= @recommendation.max_irrigation.round(2) %> inches</h4>
 
 
-<h4>Minutes to Run Your Sprinkler: <%= @recommendation.min_minutes %> - <%= @recommendation.max_minutes %> minutes</h4> 
+    <h4>Minutes to Run Your Sprinkler: <%= @recommendation.min_minutes %> - <%= @recommendation.max_minutes %> minutes</h4> 
 
-<% if @yard.day_number == 6 || yard.day_number == 0 %>
-<h4>Your Watering Time: before 10am or after 7pm</h4>
-<% else %>
-<h4>Your Watering Time: before 5am or after 7pm</h4>
-<% end %>
+    <% if @yard.day_number == 6 || @yard.day_number == 0 %>
+    <h4>Your Watering Time: before 10am or after 7pm</h4>
+    <% else %>
+    <h4>Your Watering Time: before 5am or after 7pm</h4>
+    <% end %>
 
+    </div>
+
+    <% if @yard.sprinkler_flow.nil? %>
+    <p><strong>Estimated Minutes:</strong> Because you haven't submitted your sprinkler rate, we estimated how many minutes of watering are needed.  To get a more accurate suggestion, please complete your sprinkler rate.</p>
+    <% end %>
+
+    <p><strong>Total Water Required (including rainfall):</strong> <%= @recommendation.min_req_water.round(2) %> - <%= @recommendation.max_req_water.round(2) %> inches</p>
+
+    <p><strong>Total Rainfall:</strong> <%= @recommendation.weekly_precipitation.round(2) %> inches</p>
+
+    <p><strong>Calculated Evapotranspiration:</strong> <%= @recommendation.weekly_eto.round(2) %> based on temperature, humidity, wind, and sunlight throughout the week</p>
+
+    <p><strong>Closest Weather Station:</strong> <%= @user.weather_station.name %>, <%= @user.weather_station.code %></p>
+
+    <p><strong>Grass Type:</strong> <%= @yard.grass.capitalize.sub("_a", ". A") %></p>
+  </div>
+
+  <div class="columns medium-3 show-for-medium-up">
+      <img src="<%= asset_path( 'raindrop.svg' ) %>" alt="" />
+  </div>
 </div>
 
-<% if @yard.sprinkler_flow.nil? %>
-<p><strong>Estimated Minutes:</strong> Because you haven't submitted your sprinkler rate, we estimated how many minutes of watering are needed.  To get a more accurate suggestion, please complete your sprinkler rate.</p>
-<% end %>
 
-<p><strong>Total Water Required (including rainfall):</strong> <%= @recommendation.min_req_water.round(2) %> - <%= @recommendation.max_req_water.round(2) %> inches</p>
-
-<p><strong>Total Rainfall:</strong> <%= @recommendation.weekly_precipitation.round(2) %> inches</p>
-
-<p><strong>Calculated Evapotranspiration:</strong> <%= @recommendation.weekly_eto.round(2) %> based on temperature, humidity, wind, and sunlight throughout the week</p>
-
-<p><strong>Closest Weather Station:</strong> <%= @user.weather_station.name %>, <%= @user.weather_station.code %></p>
-
-<p><strong>Grass Type:</strong> <%= @yard.grass.capitalize.sub("_a", ". A") %></p>
-
-
-<table>
+<table class="row">
   <thead>
     <tr><h4>Weather Reports for the Week:</h4></tr>
     <tr>

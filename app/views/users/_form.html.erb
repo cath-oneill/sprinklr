@@ -47,22 +47,23 @@
   <h5 class="columns small-12">What kind of grass do you have? </h5>
       <li><label for="yard_grass_buffalo">  
       <%= g.radio_button :grass, "buffalo" %>
-      <img src="<%= asset_path( 'buffalo.jpg' ) %>" alt="" />
-  Buffalo Grass
+      <img class="circle" src="<%= asset_path( 'buffalo.jpg' ) %>" alt="" />
+      <p class="text-center">Buffalo Grass</p>
     </label></li>
 <li><label for="yard_grass_st_augustine">
       <%= g.radio_button :grass, "st_augustine" %>
-      <img src="<%= asset_path( 'st_augustine.jpg' ) %>" alt="" />
-      St. Augustine</label></li>
+      <img class="circle" src="<%= asset_path( 'st_augustine.jpg' ) %>" alt="" />
+      <p class="text-center">St. Augustine</p>
+    </label></li>
     <li><label for="yard_grass_bermuda">
       <%= g.radio_button :grass, "bermuda" %>
-      <img src="<%= asset_path( 'bermuda.jpg' ) %>" alt="" />
-      Bermuda
+      <img class="circle" src="<%= asset_path( 'bermuda.jpg' ) %>" alt="" />
+      <p class="text-center">Bermuda</p>
     </label></li>
     <li><label for="yard_grass_zoysia">
       <%= g.radio_button :grass, "zoysia" %>
-      <img src="<%= asset_path( 'zoysia.jpg' ) %>" alt="" />
-      Zoysia
+      <img class="circle" src="<%= asset_path( 'zoysia.jpg' ) %>" alt="" />
+      <p class="text-center">Zoysia</p>
     </label></li>
   </ul>
 
@@ -70,13 +71,13 @@
   <h5 class="columns small-12">What kind of sprinkler do you have? </h5>
     <li><label for="yard_sprinkler_automatic">
       <%= g.radio_button :sprinkler, "automatic" %>
-      <img src="<%= asset_path( 'automatic.jpg' ) %>" alt="" />
-      Automatic Sprinkler
+      <img class="circle" src="<%= asset_path( 'automatic.jpg' ) %>" alt="" />
+      <p class="text-center">Automatic Sprinkler</p>
     </label></li>
     <li><label for="yard_sprinkler_hose_end">
       <%= g.radio_button :sprinkler, "hose_end" %>
-      <img src="<%= asset_path( 'hose_end.jpg' ) %>" alt="" />
-      Hose-End Sprinkler
+      <img class="circle" src="<%= asset_path( 'hose_end.jpg' ) %>" alt="" />
+      <p class="text-center">Hose-End Sprinkler</p>
     </label></li>
   </ul>
   <% end %>

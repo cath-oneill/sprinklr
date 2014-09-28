@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get "/signout" => "sessions#destroy", :as => :signout  
 
   resources :users, except: [:index, :new, :create, :destroy] do
-    resources :recommendations, only: [:index, :show]
+    get "/recommendation" => "recommendations#current"
   end
     
 end

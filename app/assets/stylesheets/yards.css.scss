@@ -30,3 +30,16 @@ label > input[type="radio"]:checked + img
 .yard-submit {
   margin-top: 1vh;
 }
+
+.circle {
+  border-radius: 50%;
+}
+
+.yard-pics {
+  p {
+    margin-bottom: 0.5vh;
+  }
+  img {
+    margin-bottom: 5vh;
+  }
+}

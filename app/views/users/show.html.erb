@@ -1,14 +1,18 @@
 
 <div class="row">
 
-  <div class="columns small-12">
-  <h2 class="left"><%= @user.name %>'s Profile</h2> 
-  <%= link_to edit_user_path(@user) do %>
-    <i class="fi-pencil medium right"></i>
-  <% end %>
-  </div>
+  <div class="columns small-12 medium-8">
 
-  <div class="columns small-12">
+      <h2 class="left"><%= @user.name %>'s Profile</h2> 
+      <%= link_to edit_user_path(@user) do %>
+        <i class="fi-pencil medium left edit"></i>
+      <% end %>
+
+
+
+  <div class="row">
+    <div class="columns small-12">
+      
     <% if @user.formatted_address.nil? %>
       <p><i class="fi-home small"></i> <%= @user.address %>, <%= @user.zip %></p>
     <% else %>
@@ -32,32 +36,62 @@
     <% else %>
     <p><i class="fi-clock small"></i> You haven't set your sprinkler rate yet.  We'll estimate it for you!</p>
     <% end %>
-    
+    </div>
   </div>
+   
+
+  <div class="row space-top">
+    <div class="columns small-11 border-top">
+    <h3 class=" left">Your Watering Plans</h3>
+    <%=link_to user_recommendation_path(@user) do %>
+    <i class="fi-magnifying-glass medium left edit"></i>
+    <% end %>
+
+  </div>
+</div>
+<div class="row">
+  <div class="columns small-12">
+    
+    <table class="space-top">
+      <thead>
+        <tr>
+          <th>Watering Day</th>
+          <th>Suggested Watering</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @recommendations.each do |recommendation| %>
+            <% watering_date = recommendation.created_at.to_date + 1 %>
+            <td><%= watering_date.strftime('%A, %B %d, %Y') %></td>
+            <td><%= recommendation.min_irrigation.round(2) %> - <%= recommendation.max_irrigation.round(2) %> inches</td>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+    
+
+    </div>
 
 
-</div>  
 
-<div class="yard-info row">
-
-  <div class="columns small-12 medium-6">
-    <p>
+  <div class="columns small-12 medium-4 yard-pics">
+    <p class="text-center">
       <strong>Primary Grass Type:</strong>
       <%= @yard.grass.capitalize.sub("_a", ". A") %>
     </p>
-    <img src="<%= asset_path( "#{@yard.grass}.jpg" ) %>" alt="" class="columns small-10"/>
-  </div>
+    <img class="circle" src="<%= asset_path( "#{@yard.grass}.jpg" ) %>" alt="" />
 
-  <div class="columns small-12 medium-6">
-    <p>
+    <p class="text-center">
       <strong>Sprinkler Style:</strong>
       <%= @yard.sprinkler.capitalize %>
     </p>
-      <img src="<%= asset_path( "#{@yard.sprinkler}.jpg" ) %>" alt="" class="columns small-10"/>
+      <img class="circle" src="<%= asset_path( "#{@yard.sprinkler}.jpg" ) %>" alt="" />
   </div>
-</div>
 
-<br>
+
+  </div>
 
 
 
