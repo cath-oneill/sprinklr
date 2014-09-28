@@ -14,37 +14,50 @@
     <% else %>
       <p><i class="fi-home small"></i> <%= @user.formatted_address %></p>
     <% end %>
+
     <% if @user.contact_method == "no selection" or @user.contact_method.nil? %>
       <p><i class="fi-alert small"></i> You have not yet selected a weekly contact method!</p>
     <% elsif @user.contact_method == "email" %>
-      <p><i class="fi-laptop small"></i> You have selected to receive a weekly email at <%= @user.email %>.</p>
+      <p><i class="fi-laptop small"></i> You have selected to receive a weekly <strong>email</strong> at <%= @user.email %>.</p>
     <% elsif @user.contact_method == "text" %>
-      <p><i class="fi-telephone small"></i> You have selected to receive a weekly text message at <%= @user.phone %>.</p>
+      <p><i class="fi-telephone small"></i> You have selected to receive a weekly <strong>text message</strong> at <%= @user.phone %>.</p>
     <% elsif @user.contact_method == "decline" %>
       <p><i class="fi-laptop small"></i>  You have selected to not receive weekly watering updates and can check out your recommendations online.</p>
+    <% end %>
+
+    <p><i class="fi-calendar small"></i> Your Watering Day: <strong><%= @yard.day %></strong></p>
+
+    <% if @yard.sprinkler_flow %>
+    <p><i class="fi-clock small"></i> Your Sprinkler Rate: <strong><%= @yard.sprinkler_flow %> minutes for 1 inch</strong></p>
+    <% else %>
+    <p><i class="fi-clock small"></i> You haven't set your sprinkler rate yet.  We'll estimate it for you!</p>
     <% end %>
     
   </div>
 
+
 </div>  
 
 <div class="yard-info row">
-  <div class="columns small-12">
-    <h3 class="left">Your Yard</h3> 
-  </div>
 
-  <div class="columns small-12">
+  <div class="columns small-12 medium-6">
     <p>
       <strong>Primary Grass Type:</strong>
       <%= @yard.grass.capitalize.sub("_a", ". A") %>
     </p>
+    <img src="<%= asset_path( "#{@yard.grass}.jpg" ) %>" alt="" class="columns small-10"/>
+  </div>
 
+  <div class="columns small-12 medium-6">
     <p>
       <strong>Sprinkler Style:</strong>
-      <%= @yard.sprinkler %>
+      <%= @yard.sprinkler.capitalize %>
     </p>
+      <img src="<%= asset_path( "#{@yard.sprinkler}.jpg" ) %>" alt="" class="columns small-10"/>
   </div>
 </div>
+
+<br>
 
 
 
