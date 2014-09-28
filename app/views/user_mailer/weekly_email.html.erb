@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Tomorrow is your watering day, <%= @user.name %>!</h1>
+
+    <p>Don't forget to water tomorrow! This week, your lawn needs <%= @recommendation.min_irrigation.round(2) %> - <%= @recommendation.max_irrigation.round(2) %> inches.  That should be about <%= @recommendation.min_minutes %> - <%= @recommendation.max_minutes %> minutes.   </p>
+    <p>
+      To update your information or view your recommendation in more detail, just login to to the site: <%= @url %>.
+      You will log-in through your Google account: <%= @user.login_email %>.<br>
+    </p>
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>

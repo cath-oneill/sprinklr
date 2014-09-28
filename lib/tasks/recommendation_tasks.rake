@@ -12,8 +12,8 @@ namespace :recommendations do
     TextMsg.test
   end
 
-  task :send_sms => :environment do
-    TextMsg.run(17, 21)
+  task :send_messages => :environment do
+    SendAllMessages.run
   end
 
 end
