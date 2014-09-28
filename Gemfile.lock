@@ -44,6 +44,8 @@ GEM
     coderay (1.1.0)
     columnize (0.8.9)
     connection_pool (2.0.0)
+    d3js-rails (3.1.6)
+      railties (>= 3.0, < 5.0)
     debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
     diff-lcs (1.2.5)
@@ -192,6 +194,7 @@ PLATFORMS
 DEPENDENCIES
   better_errors
   binding_of_caller
+  d3js-rails
   figaro
   foundation-rails (= 5.4.4.0)
   geocoder

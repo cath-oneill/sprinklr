@@ -18,6 +18,8 @@ gem 'sass', '3.4.3'
 gem 'uglifier', '>= 1.3.0'
 gem 'foundation-rails', '5.4.4.0'
 
+gem 'd3js-rails'
+
 gem 'geocoder'
 
 gem "nokogiri"
