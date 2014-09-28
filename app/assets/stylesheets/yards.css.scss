@@ -6,3 +6,27 @@
 div.yard-info {
   padding-top: 1rem;
 }
+
+label > input[type="radio"]{ /* HIDE RADIO */
+  visibility: hidden;
+  position: absolute;
+}
+label > input[type="radio"] + img{ /* IMAGE STYLES */
+  cursor:pointer;
+  border: 10px solid transparent;
+}
+label > input[type="radio"]:checked + img
+{ /* (RADIO CHECKED) IMAGE STYLES */
+  border: 10px solid #666;
+}
+
+.grass, .sprinkler {
+  margin-top: 1vh;
+  h5{
+    margin-left: 10px;
+  }
+}
+
+.yard-submit {
+  margin-top: 1vh;
+}

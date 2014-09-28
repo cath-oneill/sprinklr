@@ -36,18 +36,8 @@
   <div class="columns small-12">
     <p>
       <strong>Primary Grass Type:</strong>
-      <%= @yard.grass %>
+      <%= @yard.grass.capitalize.sub("_a", ". A") %>
     </p>
-
-    <p>
-      <strong>Slope:</strong>
-      <%= @yard.slope %>
-    </p>
-
-    <p>
-      <strong>Soil Type:</strong>
-      <%= @yard.soil %>
-    </p>  
 
     <p>
       <strong>Sprinkler Style:</strong>

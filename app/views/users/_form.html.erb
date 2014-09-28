@@ -11,19 +11,19 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field columns small-12 medium-6">
     <label>Name: 
     <%= f.text_field :name %></label>
   </div>
-  <div class="field">
+  <div class="field columns small-12 medium-6">
     <label>Address: 
     <%= f.text_field :address %></label>
   </div>
-  <div class="field">
+  <div class="field columns small-12 medium-6">
     <label>Zip: 
     <%= f.text_field :zip %></label>
   </div>
-  <div class="field">
+  <div class="field columns small-12 medium-6">
     <label>Your Preferred Contact Method: 
     <%= f.select :contact_method, options_for_select([
         ["Please select:", "no selection"],
@@ -32,43 +32,56 @@
         ["No Weekly Contact -- I'll check my recommendations online.", "decline"] ], f.object.contact_method
       ) %></label>
   </div>
-  <div class="field">
+  <div class="field columns small-12 medium-6">
     <label>Email: 
     <%= f.text_field :email %></label>
   </div>
-  <div class="field">
+  <div class="field columns small-12 medium-6">
     <label for="">Phone:
     <%= f.text_field :phone %></label>
   </div>
 
 <%= fields_for :yard do |g| %>
-  <div class="field">
-    <p>Is your yard sloped? </p>
-    <%= g.radio_button :slope, "flat" %> <%= g.label :slope, "My yard is flat!" %>
-    <%= g.radio_button :slope, "slight" %> <%= g.label :slope, "My yard is slightly sloped!" %>
-    <%= g.radio_button :slope, "steep" %> <%= g.label :slope, "My yard is very steep!" %>
-  </div>
 
-  <div class="field">
-    <p>What kind of soil do you have? </p>
-    <%= g.radio_button :soil, "clay" %> <%= g.label :soil, "Clay" %>
-    <%= g.radio_button :soil, "loam" %> <%= g.label :soil, "Loam" %>
-  </div>
+  <ul class="field row small-block-grid-2 medium-block-grid-4">
+  <h5 class="columns small-12">What kind of grass do you have? </h5>
+      <li><label for="yard_grass_buffalo">  
+      <%= g.radio_button :grass, "buffalo" %>
+      <img src="<%= asset_path( 'buffalo.jpg' ) %>" alt="" />
+  Buffalo Grass
+    </label></li>
+<li><label for="yard_grass_st_augustine">
+      <%= g.radio_button :grass, "st_augustine" %>
+      <img src="<%= asset_path( 'st_augustine.jpg' ) %>" alt="" />
+      St. Augustine</label></li>
+    <li><label for="yard_grass_bermuda">
+      <%= g.radio_button :grass, "bermuda" %>
+      <img src="<%= asset_path( 'bermuda.jpg' ) %>" alt="" />
+      Bermuda
+    </label></li>
+    <li><label for="yard_grass_zoysia">
+      <%= g.radio_button :grass, "zoysia" %>
+      <img src="<%= asset_path( 'zoysia.jpg' ) %>" alt="" />
+      Zoysia
+    </label></li>
+  </ul>
 
-  <div class="field">
-    <p>Is your yard sloped? </p>
-    <%= g.radio_button :sprinkler, "automatic" %> <%= g.label :sprinkler, "I have an automatic sprinkler system." %>
-    <%= g.radio_button :sprinkler, "rotating" %> <%= g.label :sprinkler, "I have a rotating sprinkler that I connect to a hose." %>
-  </div>
-
-  <div class="field">
-    <p>What kind of grass do you have? </p>
-    <%= g.radio_button :grass, "buffalo" %> <%= g.label :grass, "Super drought-resistant Buffalo grass" %>
-    <%= g.radio_button :grass, "carpetgrass" %> <%= g.label :grass, "Carpet Grass" %>
-  </div>
+    <ul class="field row small-block-grid-2 medium-block-grid-4">
+  <h5 class="columns small-12">What kind of sprinkler do you have? </h5>
+    <li><label for="yard_sprinkler_automatic">
+      <%= g.radio_button :sprinkler, "automatic" %>
+      <img src="<%= asset_path( 'automatic.jpg' ) %>" alt="" />
+      Automatic Sprinkler
+    </label></li>
+    <li><label for="yard_sprinkler_hose_end">
+      <%= g.radio_button :sprinkler, "hose_end" %>
+      <img src="<%= asset_path( 'hose_end.jpg' ) %>" alt="" />
+      Hose-End Sprinkler
+    </label></li>
+  </ul>
   <% end %>
 
   <div class="actions">
     <%= f.submit(:class => "button radius", value: "Save Information") %>
-  </div>
+    </div>
 <% end %>
