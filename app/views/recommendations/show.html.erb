@@ -1,4 +1,62 @@
-<p id="notice"><%= notice %></p>
+<h2>Your Watering Plan: <%= @watering_date.strftime('%A, %b %d') %></h2>
 
-<%= link_to 'Edit', edit_recommendation_path(@recommendation) %> |
-<%= link_to 'Back', recommendations_path %>
+<div class="panel">
+  
+<h4>Inches of Water: <%= @recommendation.min_irrigation.round(2) %> - <%= @recommendation.max_irrigation.round(2) %> inches</h4>
+
+
+<h4>Minutes to Run Your Sprinkler: <%= @recommendation.min_minutes %> - <%= @recommendation.max_minutes %> minutes</h4> 
+
+<% if @yard.day_number == 6 || yard.day_number == 0 %>
+<h4>Your Watering Time: before 10am or after 7pm</h4>
+<% else %>
+<h4>Your Watering Time: before 5am or after 7pm</h4>
+<% end %>
+
+</div>
+
+<% if @yard.sprinkler_flow.nil? %>
+<p><strong>Estimated Minutes:</strong> Because you haven't submitted your sprinkler rate, we estimated how many minutes of watering are needed.  To get a more accurate suggestion, please complete your sprinkler rate.</p>
+<% end %>
+
+<p><strong>Total Water Required (including rainfall):</strong> <%= @recommendation.min_req_water.round(2) %> - <%= @recommendation.max_req_water.round(2) %> inches</p>
+
+<p><strong>Total Rainfall:</strong> <%= @recommendation.weekly_precipitation.round(2) %> inches</p>
+
+<p><strong>Calculated Evapotranspiration:</strong> <%= @recommendation.weekly_eto.round(2) %> based on temperature, humidity, wind, and sunlight throughout the week</p>
+
+<p><strong>Closest Weather Station:</strong> <%= @user.weather_station.name %>, <%= @user.weather_station.code %></p>
+
+<p><strong>Grass Type:</strong> <%= @yard.grass.capitalize.sub("_a", ". A") %></p>
+
+
+<table>
+  <thead>
+    <tr><h4>Weather Reports for the Week:</h4></tr>
+    <tr>
+      <th>Date</th>
+      <th>High Temp</th>
+      <th>Low Temp</th>
+      <th>Avg Temp</th>
+      <th>Rainfall</th>
+      <th>Min Humidity</th>
+      <th>Max Humidity</th>
+      <th>Wind Speed</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @reports.each do |r| %>
+    <tr>
+      <td><%= r.date %></td>
+      <td><%= (r.maximum_temperature*9/5 + 32).round(2) %>F</td>
+      <td><%= (r.minimum_temperature*9/5 + 32).round(2) %>F</td>
+      <td><%= (r.mean_temperature*9/5 + 32).round(2) %></td>
+      <td><%= r.precipitation %>"</td>
+      <td><%= r.minimum_humidity %>%</td>
+      <td><%= r.maximum_humidity %>%</td>
+      <td><%= r.wind_speed %></td>
+    </tr>    
+    <% end %>
+  </tbody>
+</table>
+
