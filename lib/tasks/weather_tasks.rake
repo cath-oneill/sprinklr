@@ -19,6 +19,7 @@ namespace :weather do
     puts "Got some weather data info and calculated evapotranspiration!"
   end
 
+  #at command line: rake weather:recommendations_by_date[September,26,2014]
   task :recommendations_by_date, [:month, :date, :year] => :environment do |task, args|
     RunAllRecommendations.run("#{args.month} #{args.date}, #{args.year}")
   end
