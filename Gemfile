@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.0.0'
 
 # Authentication via Google:
 gem "omniauth-google-oauth2"
@@ -6,6 +7,7 @@ gem "omniauth-google-oauth2"
 gem 'figaro'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
+gem 'rails_12factor'
 #use postgres as database for Active Record
 gem 'pg'
 
