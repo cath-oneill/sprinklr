@@ -10,5 +10,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:update] 
 
-  mount Sidekiq::Web => '/sidekiq' 
+  # sidekiq_constraint = lambda do |request|
+  #   request.env['warden'].authenticate? && request.env['warden'].user.admin?
+  # end
+  # mount Sidekiq::Web => '/sidekiq' 
 end

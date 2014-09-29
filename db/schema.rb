@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140929161052) do
+ActiveRecord::Schema.define(version: 20140929224037) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(version: 20140929161052) do
     t.datetime "updated_at"
     t.string   "formatted_address"
     t.integer  "weather_station_id"
+    t.boolean  "admin",              default: false
   end
 
   add_index "users", ["weather_station_id"], name: "index_users_on_weather_station_id", using: :btree
