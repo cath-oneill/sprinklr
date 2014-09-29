@@ -29,7 +29,9 @@
       <p><i class="fi-laptop small"></i>  You have selected to not receive weekly watering updates and can check out your recommendations online.</p>
     <% end %>
 
+    <% if @yard.day %>
     <p><i class="fi-calendar small"></i> Your Watering Day: <strong><%= @yard.day %></strong></p>
+    <% end %>
 
     <% if @yard.sprinkler_flow %>
     <p><i class="fi-clock small"></i> Your Sprinkler Rate: <strong><%= @yard.sprinkler_flow %> minutes for 1 inch</strong></p>
