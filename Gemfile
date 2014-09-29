@@ -15,6 +15,7 @@ gem 'pg'
 #sinatra required for web monitoring of sinatra jobs
 gem 'sidekiq'
 gem 'sinatra', '>= 1.3.0', :require => nil
+gem 'unicorn'
 
 gem 'sass', '3.4.3'
 gem 'uglifier', '>= 1.3.0'
