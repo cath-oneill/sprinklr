@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   def update
     need_to_update_user = @user.address != user_params['address'] || @user.zip != user_params['zip']
     if @user.update(user_params) && @yard.update(yard_params)
+      @yard.calculate_sprinkler_flow
       GetWateringDay.run(@yard, @user)
       GeocodeWorker.perform_async(@user.id, @user.address, @user.zip) if need_to_update_user
       redirect_to profile_path, notice: 'User was successfully updated.'
@@ -39,7 +40,7 @@ class UsersController < ApplicationController
       params.require(:user).permit(:name, :address, :zip, :contact_method, :email, :phone, :yard)
     end
     def yard_params
-      params.require(:yard).permit(:grass, :name, :slope, :soil, :sprinkler)
+      params.require(:yard).permit(:grass, :sprinkler, :sprinkler_flow_inches, :sprinkler_flow_minutes)
     end
 
 end

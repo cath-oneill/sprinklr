@@ -80,6 +80,21 @@
       <p class="text-center">Hose-End Sprinkler</p>
     </label></li>
   </ul>
+
+  <div class="panel callout columns small-12 radius">
+    <h5>Sprinkler Flow</h5>
+    <p><em>Dont' worry!</em> If you don't have time to do this right now, we will still estimate for you.  But this will help you water much more accurately.  So come back and fill it in when you have time!</p>
+    <p><strong>How To:</strong> Set out small cans, such as a tuna can, in several locations in your yard.  Start your sprinkler and set a timer.  Record what fraction of an inch of water collects during what length of time.  If your sprinkler flow is slightly varied, just take the average.  If your sprinkler flow is very inconsistent in different locations, you should probably look into updating your sprinkler.  Best results occur when you collect at least 1/4 inch.  </p>
+  <div class="field columns small-12 medium-6">
+    <label for="">Minutes:
+    <%= g.number_field :sprinkler_flow_minutes %></label>
+  </div>
+  <div class="field columns small-12 medium-6">
+    <label for="">Inches:
+    <%= g.select(:sprinkler_flow_inches, [["1/4 inch", 0.25], ["1/2 inch", 0.5], ["3/4 inch", 0.75], ["1 inch", 1]]) %></label>
+  </div>
+  </div>
+
   <% end %>
 
   <div class="actions">
