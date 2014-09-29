@@ -9,8 +9,6 @@ Rails.application.routes.draw do
   get "/plan" => "recommendations#current"
 
   resources :users, only: [:update] 
-  
-  authenticate :user, lambda { |u| u.id == 1 } do
-    mount Sidekiq::Web => '/sidekiq'
-  end
+
+  get '/sidekiq' => "sidekiq#monitor"
 end
