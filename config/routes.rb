@@ -10,5 +10,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:update] 
 
-  get '/sidekiq' => "sidekiq#monitor"
+  if current_user.login_email == 'cathzozo@gmail.com' || current.login_email = "seanoneillut@gmail.com"
+    mount Sidekiq::Web => '/sidekiq' 
+  end
 end
