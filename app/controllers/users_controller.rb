@@ -32,7 +32,11 @@ class UsersController < ApplicationController
     end
 
     def set_yard
-      @yard = current_user.yard
+      if current_user
+        @yard = current_user.yard
+      else
+        @yard = Yard.new
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
