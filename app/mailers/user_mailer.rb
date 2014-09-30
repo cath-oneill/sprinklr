@@ -3,7 +3,7 @@ class UserMailer < ActionMailer::Base
 
   def welcome(user_id)
     @user = User.find(user_id)
-    @yard = user.yard
+    @yard = @user.yard
     @url  = 'http://atx-sprinklr.herokuapp.com'
     if @user.missing_info?
       mail(to: @user.email, 
