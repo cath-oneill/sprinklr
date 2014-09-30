@@ -19,7 +19,7 @@ class UsersController < ApplicationController
       @yard.calculate_sprinkler_flow
       GetWateringDay.run(@yard, @user)
       GeocodeWorker.perform_async(@user.id, @user.address, @user.zip) if need_to_update_user
-      redirect_to "/profile", notice: 'User was successfully updated.'
+      redirect_to profile_path, notice: 'User was successfully updated.'
     else
       render :edit, notice: 'Please fill out all required fields.'
     end
