@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  require 'sidekiq/web'
   root :to => 'welcome#index'
 
   get "/auth/:provider/callback" => "sessions#create"
@@ -8,10 +7,5 @@ Rails.application.routes.draw do
   get "/edit" => "users#edit"
   get "/plan" => "recommendations#current"
 
-  resources :users, only: [:update] 
-
-  # sidekiq_constraint = lambda do |request|
-  #   request.env['warden'].authenticate? && request.env['warden'].user.admin?
-  # end
-  # mount Sidekiq::Web => '/sidekiq' 
+  resources :users, only: [:update]  
 end
