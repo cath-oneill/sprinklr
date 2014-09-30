@@ -12,7 +12,7 @@ end
 require 'sidekiq/web'
 map '/sidekiq' do
   use Rack::Auth::Basic, "Protected Area" do |username, password|
-    username == "ENV['SIDEKIQ_LOGIN']" && password == "ENV['SIDEKIQ_PASSWORD']"
+    username == "sidekiq-sprinklr" && password == "truffles"
   end
 
   run Sidekiq::Web
