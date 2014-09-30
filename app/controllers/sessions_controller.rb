@@ -11,9 +11,9 @@ class SessionsController < ApplicationController
     session[:user_id] = user.id
     user.save
     if new_user
-      redirect_to edit_path, alert: "Welcome to sprinklr!"
+      redirect_to edit_profile_path, alert: "Welcome to sprinklr!"
     elsif user.zip.nil? || user.address.nil?
-      redirect_to edit_path, alert: "Please complete your profile information."
+      redirect_to edit_profile_path, alert: "Please complete your profile information."
     else
       redirect_to profile_path
     end
