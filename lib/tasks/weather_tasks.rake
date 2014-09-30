@@ -19,6 +19,11 @@ namespace :weather do
     puts "Got some weather data info and calculated evapotranspiration!"
   end
 
+  task :get_weather_data_by_date, [:YYYYMMDD]  => :environment do |task, args|
+    DailyWeatherData.run("history_#{args.YYYYMMDD}")
+    "Sent jobs to Sidekiq for #{args.YYYYMMDD}."
+  end
+
   task :daily => [ :get_solar_data, :get_weather_data]
   task :weekly => [:lookup_stations, :update_all_closest_stations]
 end
