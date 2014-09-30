@@ -1,11 +1,15 @@
 .border, #zips {
   fill: none;
-  stroke: #fff;
+  stroke: #666;
   stroke-linejoin: round;
 }
 
 path {
-  stroke: white;
+  stroke: #666;
   stroke-width: 0.25px;
   fill: grey;
+}
+
+#map svg{
+  overflow: hidden;
 }
