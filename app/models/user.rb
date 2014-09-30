@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
     return true if self.contact_method == "no selection"
     return true if self.contact_method == "text" && self.phone.nil?
     return true if self.yard.grass.nil?
-    return true if self.yard.sprinker.nil?
+    return true if self.yard.sprinkler.nil?
     false
   end
 end
