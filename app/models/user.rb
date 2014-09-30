@@ -12,6 +12,7 @@ class User < ActiveRecord::Base
       yard: Yard.create
     )
     UserMailer.delay_for(60.minutes).welcome(user.id)
+    return user
   end
 
   def missing_info?
