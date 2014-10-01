@@ -38,6 +38,22 @@ d3.json("austinzips.geojson", function(err, data) {
   });
 });
 
+var url = "./eto/2014/09/20.json";
+
+$.getJSON( url, function( data ) {
+    console.log(data);
+  var items = [];
+  $.each( data, function( key, val ) {
+    items.push( "<li id='" + key + "'>" + val + "</li>" );
+  });
+ 
+  $( "<ul/>", {
+    "class": "my-new-list",
+    html: items.join( "" )
+  }).appendTo( "body" );
+});
+
+
 
 // d3.json("unemployment.json", function(json) {
 //   data = json;
