@@ -7,11 +7,11 @@ var width = 1000,
 $('#map').attr("width", width).attr("height", height);
 
 var center = [-97.72409, 30.279262];
-// var center = [38.996815, 34.802075];
+
 var projection = d3.geo.conicConformal()
     .center(center)
     .clipAngle(180)
-    .scale(3500)
+    .scale(90000)
     .translate([width / 2, height / 2]);
     //.precision(0.1);
 
@@ -21,13 +21,27 @@ var svg = d3.select("#map").append("svg")
     .attr("width", width)
     .attr("height", height);
 
+var quantize = d3.scale.quantize()
+    .domain([0, .15])
+    .range(d3.range(9).map(function(i) { return "q" + i + "-9"; }));
 
-d3.json("texas_zip_code_shapefiles.geojson", function(err, data) {
+var zips = svg.append("g")
+    .attr("class", "zips");
+ 
+d3.json("austinzips.geojson", function(err, data) {
   console.log(data);
-  $.each(data.geometries, function(i, geometry) {
-    svg.append("path")
-        .datum(geometry)
-        .attr("class", "border")
-        .attr("d", path)
+  $.each(data.features, function(i, feature) {
+    zips.append("path")
+        .datum(feature.geometry)
+        .attr("id", feature.properties.NAME)
+        .attr("d", path);
   });
 });
+
+
+// d3.json("unemployment.json", function(json) {
+//   data = json;
+
+//   zips.selectAll("path")
+//       .attr("class", quantize);
+// });
