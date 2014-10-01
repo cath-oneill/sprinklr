@@ -6,9 +6,12 @@ path {
   fill: none;
 }
 
+#map {
+  overflow-x: hidden;
+}
+
 #map svg{
   overflow: hidden;
-  transform: rotate(-53deg);
 }
 
 .q0-9 { fill:rgb(247,251,255); }

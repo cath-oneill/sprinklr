@@ -5,7 +5,7 @@ class WeatherController < ApplicationController
     month = params[:MM]
     day = params[:DD]
     @eto = EtoCalculation.where(date: "#{month}-#{day}-#{year}")
-    render json: @eto.as_json(include: [{weather_station: {only: [:latitude, :longitude]}}])
+    render json: @eto.as_json(include: [{weather_station: {only: [:zip]}}])
   end
 
 

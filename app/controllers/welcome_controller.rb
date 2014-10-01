@@ -4,8 +4,4 @@ class WelcomeController < ApplicationController
 
   def index
   end
-
-  def map
-    render 'map'
-  end
 end

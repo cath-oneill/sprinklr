@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get "/auth/:provider/callback" => "sessions#create"
   get "/signout" => "sessions#destroy", :as => :signout
   get "/plan" => "recommendations#current"
-  get "/map" => "welcome#map"
+  get "/map" => "map#map"
   resource :profile, only: [:show, :edit, :update], :controller => 'users'
 
   get "/eto/:YYYY/:MM/:DD" => "weather#eto"
