@@ -9,6 +9,10 @@ namespace :weather do
     puts 'Done updating stations.'
   end
 
+  task :add_zips_to_all_stations => :environment do
+    WeatherStation.all.each { |ws| AddZipsToStations.run(ws.id) }
+  end
+
   task :get_solar_data => :environment do
     GetSolarData.run
     puts "Done putting solar data in the DB!"

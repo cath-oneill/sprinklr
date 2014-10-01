@@ -11,13 +11,14 @@ class LookupWeatherStations
     airports = json['location']['nearby_weather_stations']['airport']['station']
     airports.each do |x|
       unless WeatherStation.find_by(code: x['icao'])
-        WeatherStation.create(
+        ws = WeatherStation.create(
           latitude: x['lat'],
           longitude: x['lon'],
           code: x['icao'],
           kind: 'airport',
           name: x['city']
           )
+        AddZipsToStation.run(ws.id)
       end
     end
 
@@ -31,6 +32,7 @@ class LookupWeatherStations
           kind: 'pws',
           name: x['neighborhood']
           )
+        AddZipsToStation.run(ws.id)
       end
     end
   end
