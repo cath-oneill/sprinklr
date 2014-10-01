@@ -21,6 +21,7 @@ $('#map-form').on('submit', function(e){
     MM = date[1];
     DD = date[2];
     mapType = $('#map-date').val();
+    $('.zips').html("");
     coloredMap();
     header();
 });
