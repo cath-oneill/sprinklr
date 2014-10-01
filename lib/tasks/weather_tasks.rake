@@ -1,4 +1,4 @@
-namespace :weather do
+anamespace :weather do
   task :lookup_stations => :environment do
     LookupWeatherStations.run
     puts 'I finished looking up the stations and sticking new ones in the DB!'
