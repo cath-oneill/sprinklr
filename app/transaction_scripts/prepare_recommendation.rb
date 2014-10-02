@@ -88,7 +88,7 @@ class PrepareRecommendation
     if user.yard.sprinkler_flow.nil? 
       sprinkler_rate = 60
     else
-      sprinkler_rate = user.yard.sprinkler_flow
+      sprinkler_rate = user.yard.sprinkler_flow.to_f
     end
 
     #sprinkler rate calculation of minutes
