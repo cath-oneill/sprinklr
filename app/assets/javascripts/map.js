@@ -58,6 +58,7 @@ function coloredMap() {
             key = report["weather_station"]["zip"];
             value = report["eto"];
             paired_data[key] = value;
+            createTable(key, value);
         });
 
         d3.json("austinzips.geojson", function(err, data) {
@@ -84,6 +85,15 @@ function getYesterdaysDate() {
     DD = date.getDate(); 
     MM = date.getMonth()+1;
     YYYY = date.getFullYear();
+}
+
+function createTable(zip, data) {
+    var row = $('<tr>');
+    var tdz = $('<td>').text(zip);
+    var tdd = $('<td>').text(data);
+    row.append(tdz);
+    row.append(tdd);
+    $('#table-data').append(row);
 }
 
 

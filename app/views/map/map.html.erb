@@ -1,25 +1,41 @@
-<div class="columns small-12 medium-4">
-  <h3 id="map-title"></h3>
-  <h5 id = "date-title"></h5>
-  <form id="map-form" action="">
-    <select name="info" id="map-type">
-      <option value="eto">Reference Evapotranspiration</option>
-    </select>
-    <input id="map-date" type="date">
-    <input type="submit">
-  </form>
+<div class="row">
+  
+  <div class="columns small-12 medium-4">
+    <h3 id="map-title"></h3>
+    <h5 id = "date-title"></h5>
+    <form id="map-form" action="">
+      <select name="info" id="map-type">
+        <option value="eto">Reference Evapotranspiration</option>
+      </select>
+      <input id="map-date" type="date">
+      <input type="submit" class="button radius">
+    </form>
 
-  <hr>
+    <hr>
 
-  <div class="panel">
-    <h4>API</h4>
+    <div class="panel radius">
+      <h4>API</h4>
 
-    <p>Calculated Evapotranspiration can be accessed at http://atx-sprinklr.herokuapp.com/ eto/YYYY/MM/DD.json.  The evapotranspiration for each day will not be available until the next day.  The calculation is provided for several locations in Austin based on weather data from each weather station.</p>
+      <p>Calculated Evapotranspiration can be accessed at http://atx-sprinklr.herokuapp.com/ eto/YYYY/MM/DD.json.  The evapotranspiration for each day will not be available until the next day.  The calculation is provided for several locations in Austin based on weather data from each weather station.</p>
+    </div>
+    <div class="panel callout radius">
+      <table>
+        <thead>
+          <tr>
+            <th>Zip Code</th>
+            <th>Evapotranspiration</th>
+          </tr>
+        </thead>
+        <tbody id="table-data">
+            
+        </tbody>
+      </table>
+    </div>
   </div>
-</div>
 
 
-<div class="columns small-12 medium-8" id="map"></div>
+  <div class="columns small-12 medium-8" id="map"></div>
+</div>  
 
 
 <%= javascript_include_tag "http://d3js.org/d3.v3.min.js" %>
