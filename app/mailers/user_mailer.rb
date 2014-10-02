@@ -8,19 +8,23 @@ class UserMailer < ActionMailer::Base
     if @user.missing_info?
       mail(to: @user.email, 
         subject: 'Welcome to Sprinklr',
-        template: "welcome_errors")
+        template_path: "user_mailer",
+        template_name: "welcome_errors")
     elsif @user.contact_method == 'text'
       mail(to: @user.email, 
         subject: 'Welcome to Sprinklr',
-        template: "welcome_success_text")
+        template_path: "user_mailer",
+        template_name: "welcome_success_text")
     elsif @user.contact_method == "email"
       mail(to: @user.email, 
         subject: 'Welcome to Sprinklr',
-        template: "welcome_success_email")
+        template_path: "user_mailer",
+        template_name: "welcome_success_email")
     elsif @user.contact_method == "decline"
       mail(to: @user.email, 
         subject: 'Welcome to Sprinklr',
-        template: "welcome_success_decline")      
+        template_path: "user_mailer",
+        template_name: "welcome_success_decline")      
     end
   end  
 
