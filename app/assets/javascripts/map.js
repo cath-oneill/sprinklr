@@ -90,7 +90,7 @@ function getYesterdaysDate() {
 function createTable(zip, data) {
     var row = $('<tr>');
     var tdz = $('<td>').text(zip);
-    var tdd = $('<td>').text(Math.round((data) * 100) / 100); //round to 2 digits workaround for js
+    var tdd = $('<td>').text((Math.round((data) * 100) / 100) + "in."); //round to 2 digits workaround for js
     row.append(tdz);
     row.append(tdd);
     $('#table-data').append(row);
