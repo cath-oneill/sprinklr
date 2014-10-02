@@ -66,9 +66,11 @@
 
       <tbody>
         <% @recommendations.each do |recommendation| %>
+        <tr>
             <td><%= recommendation.watering_day.strftime('%A, %B %d, %Y') %></td>
             <td><%= recommendation.min_irrigation.round(2) %> - <%= recommendation.max_irrigation.round(2) %> inches</td>
             <td><%= recommendation.min_minutes %> - <%= recommendation.max_minutes %> minutes</td>
+        </tr>
         <% end %>
       </tbody>
     </table>
