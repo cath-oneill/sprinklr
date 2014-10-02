@@ -28,6 +28,13 @@ namespace :weather do
     "Sent jobs to Sidekiq for #{args.YYYYMMDD}."
   end
 
-  task :daily => [ :get_solar_data, :get_weather_data]
-  task :weekly => [:lookup_stations, :update_all_closest_stations]
+  task :daily => [ :get_solar_data, :get_weather_data ]
+  
+  task :weekly do
+    if Date.today.wday == 0
+      Rake::Task["weather:lookup_stations"].invoke
+      Rake::Task["weather:update_all_closest_stations"].invoke
+    end
+  end
+
 end
