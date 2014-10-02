@@ -13,7 +13,7 @@
   <div class="row">
     <div class="columns small-12">
       
-    <% if @user.formatted_address.nil? %>
+    <% if @user.formatted_address.nil? || @user.address.updated_at(< 1.hour.ago) || @user.zip.updated_at(< 1.hour.ago) %>
       <p><i class="fi-home small"></i> <%= @user.address %>, <%= @user.zip %></p>
     <% else %>
       <p><i class="fi-home small"></i> <%= @user.formatted_address %></p>
@@ -82,17 +82,20 @@
 
 
   <div class="columns small-12 medium-4 yard-pics">
+    <% if @yard.grass %>
     <p class="text-center">
       <strong>Primary Grass Type:</strong>
       <%= @yard.grass.capitalize.sub("_a", ". A") %>
     </p>
     <img class="circle" src="<%= asset_path( "#{@yard.grass}.jpg" ) %>" alt="" />
-
+    <% end %>
+    <% if @yard.sprinkler %>
     <p class="text-center">
       <strong>Sprinkler Style:</strong>
       <%= @yard.sprinkler.capitalize %>
     </p>
       <img class="circle" src="<%= asset_path( "#{@yard.sprinkler}.jpg" ) %>" alt="" />
+      <% end %>
   </div>
 
 
