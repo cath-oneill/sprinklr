@@ -13,7 +13,7 @@
   <div class="row">
     <div class="columns small-12">
       
-    <% if @user.formatted_address.nil? || @user.address.updated_at(< 1.hour.ago) || @user.zip.updated_at(< 1.hour.ago) %>
+    <% if @user.formatted_address.nil? || @user.updated_at < 1.hour.ago  %>
       <p><i class="fi-home small"></i> <%= @user.address %>, <%= @user.zip %></p>
     <% else %>
       <p><i class="fi-home small"></i> <%= @user.formatted_address %></p>
