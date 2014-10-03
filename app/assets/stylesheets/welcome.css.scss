@@ -6,8 +6,9 @@
 .splash {
   margin-top: 0;
   background-image: url(image-path('green-grass.jpg'));
-  background-size: 100%;
+  background-size: cover;
   height: 75vh;
+  max-height: 500px;
   h1 {
     padding-top: 15vh;
     font-size: 7rem;
